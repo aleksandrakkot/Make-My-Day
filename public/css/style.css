@@ -131,3 +131,7 @@ form .field{
     font-size: 24px;
     margin-top: 3em;
 }
+
+#left img {
+    width: 70%;
+}
