@@ -30,13 +30,56 @@ li {
     margin: 2em 1em;
 }
 
-.menu > a {
+.menu-addplan > a {
     padding: 1em;
     position: absolute;
     top: 85%;
     left: 40px;
     background-color: #F58800;
 }
+
+.menu-icons {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-icons span.preview {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    opacity: 0;
+    font-family: var(--main-font);
+    color: black;
+}
+
+.menu-icons:hover span.preview {
+    opacity: 1;
+}
+
+.menu-addplan {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-addplan span.preview {
+    position: absolute;
+    top: 15px;
+    left: 75px;
+    opacity: 0;
+    font-family: var(--main-font);
+    color: black;
+}
+
+.menu-addplan:hover span.preview {
+    opacity: 1;
+}
+
 
 .content {
     width: 100%;
@@ -52,8 +95,6 @@ li {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-   /* justify-content: space-between;
-    padding: 0em 1em 0em 10em;*/
     margin: 2em;
     position: relative;
 }
@@ -93,15 +134,12 @@ li {
     margin: 0.5em;
 }
 
-.log-out > svg {
-    margin: 0.5em;
-}
-
 .log-out-button {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 0em 1em;
+    padding-top: 0.3em;
     font-family: var(--main-font);
 }
 
