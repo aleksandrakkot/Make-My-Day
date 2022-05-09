@@ -114,3 +114,11 @@ form .field{
     color: #000000;
     font-weight: 600;
 }
+
+div >img:nth-child(1){
+    width: 80%;
+}
+
+div >img:nth-child(2){
+    width: 60%;
+}
