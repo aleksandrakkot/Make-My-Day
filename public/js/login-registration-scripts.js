@@ -13,3 +13,31 @@ passwordInput.addEventListener('keyup', ()=>{
         showBtn.style.display='none'
     }
 })
+
+const multiStepForm = document.querySelector('[data-multi-step]')
+const formSteps = [...multiStepForm.querySelectorAll('[data-step]')]
+
+
+let currStep = formSteps.findIndex( step => {
+    return step.classList.contains("active")
+})
+console.log(currStep)
+if(currStep < 0){
+    currStep = 0
+    formSteps[currStep].classList.add("active")
+    showCurrStep()
+}
+
+multiStepForm.addEventListener("click", e =>{
+    if (e.target.matches("[data-next]")){
+        currStep +=1
+        console.log(currStep)
+    }
+    showCurrStep()
+})
+console.log(currStep)
+function showCurrStep() {
+    formSteps.forEach((step,index) => {
+        formSteps[currStep].classList.toggle("active",index === currStep)
+    })
+}
