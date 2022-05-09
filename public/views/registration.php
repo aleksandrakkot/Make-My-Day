@@ -4,27 +4,27 @@
     <title>Register | MakeMyDay</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&family=Nunito+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript" src="../js/login-registration-scripts.js" defer></script>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <script type="text/javascript" src="/public/js/login-registration-scripts.js" defer></script>
 </head>
 
 <body>
 <div class="base-container">
     <div id="left">
-        <img src="" alt="logo">
-        <img src="" alt="obrazek">
+        <img src="/public/img/logo.svg" alt="logo">
+        <img src="/public/img/pic.png" alt="obrazek">
     </div>
     <div id="right">
         <div id="upper_btns">
-            <a id="sign_in">Sign in</a>
-            <a id="sign_up" class="active">Sign up</a>
+            <a id="sign_in" href="/login">Sign in</a>
+            <a id="sign_up" class="active" href="/registration">Sign up</a>
         </div>
         <div id="head_welcome">
             <h1>Welcome</h1>
             <p>Please create your account.</p>
         </div>
-        <form data-multi-step id="" action="" method="">
-            <div data-step class="step active">
+        <form class="multi-step-form" data-multi-step>
+            <div class="step" data-step>
                 <div class="div-inp">
                     <p>Email:</p>
                     <input name="email" type="text">
@@ -44,9 +44,9 @@
                     <p>Confirm password:</p>
                     <input name="confirm_password" type="password">
                 </div>
-                <button data-next id="next" class="btn">Next</button>
+                <button type="button" class="btn" data-next>Next</button>
             </div>
-            <div data-step class="step">
+            <div class="step" data-step>
                 <div class="div-inp2">
                     <p>Imię:</p>
                     <input name="imie" type="text">

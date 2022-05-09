@@ -15,8 +15,8 @@
     </div>
     <div id="right">
         <div id="upper_btns">
-            <a id="sign_in" class="active">Sign in</a>
-            <a id="sign_up">Sign up</a>
+            <a id="sign_in" class="active" href="/login">Sign in</a>
+            <a id="sign_up" href="/registration">Sign up</a>
         </div>
         <div id="head_welcome">
             <h1>Welcome</h1>

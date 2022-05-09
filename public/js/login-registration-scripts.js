@@ -14,23 +14,24 @@ passwordInput.addEventListener('keyup', ()=>{
     }
 })
 
-const multiStepForm = document.querySelector('[data-multi-step]')
+const multiStepForm = document.querySelector("[data-multi-step]")
 const formSteps = [...multiStepForm.querySelectorAll('[data-step]')]
 
 
 let currStep = formSteps.findIndex( step => {
     return step.classList.contains("active")
 })
-console.log(currStep)
+
 if(currStep < 0){
     currStep = 0
-    formSteps[currStep].classList.add("active")
     showCurrStep()
 }
 
-multiStepForm.addEventListener("click", e =>{
+multiStepForm.addEventListener("click", e => {
+    let incre
     if (e.target.matches("[data-next]")){
-        currStep +=1
+        incre = 1
+        currStep += incre
         console.log(currStep)
     }
     showCurrStep()
@@ -38,6 +39,6 @@ multiStepForm.addEventListener("click", e =>{
 console.log(currStep)
 function showCurrStep() {
     formSteps.forEach((step,index) => {
-        formSteps[currStep].classList.toggle("active",index === currStep)
+        step.classList.toggle("active",index === currStep)
     })
 }
