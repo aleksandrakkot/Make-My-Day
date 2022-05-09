@@ -3,15 +3,15 @@
 <head>
     <title>Login | MakeMyDay</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&family=Nunito+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <script type="text/javascript" src="../js/login-registration-scripts.js" defer></script>
 </head>
 
 <body>
 <div class="base-container">
     <div id="left">
-        <img src="" alt="logo">
-        <img src="" alt="obrazek">
+        <img src="/public/img/logo.svg" alt="logo">
+        <img src="/public/img/pic.png" alt="obrazek">
     </div>
     <div id="right">
         <div id="upper_btns">
@@ -22,7 +22,7 @@
             <h1>Welcome</h1>
             <p>Please sign in.</p>
         </div>
-        <form id="" action="" method="">
+        <form id="" action="login" method="POST">
             <div class="div-inp">
                 <p>Email</p>
                 <input name="email" type="text">
@@ -34,7 +34,7 @@
                     <span class="showBtn"><img src="https://img.icons8.com/material-sharp/24/000000/visible.png"/></span>
                 </div>
             </div>
-            <button id="submit">Sign in</button>
+            <button class = "btn" id="submit">Sign in</button>
             <div class="create-account">
                 <p>Don't have an account? <a id="create-new-account" href="#">Create</a></p>
             </div>
