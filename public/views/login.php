@@ -26,7 +26,7 @@
             <h1>Welcome</h1>
             <p>Please sign in.</p>
         </div>
-        <form id="" action="login" method="POST">
+        <form class="login-form" id="" action="login" method="POST">
             <div class="div-inputs">
                 <div class="div-inp">
                     <p>Email</p>

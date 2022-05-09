@@ -50,9 +50,9 @@
                         <input name="confirm_password" type="password">
                     </div>
                 </div>
-                <div class="div-btn">
-                    <button type="button" class="btn" data-next>Next</button>
-                </div>
+                    <div class="div-btn">
+                        <button type="button" class="btn" data-next>Next</button>
+                    </div>
             </div>
             <div class="step" data-step>
                 <div class="div-inputs">

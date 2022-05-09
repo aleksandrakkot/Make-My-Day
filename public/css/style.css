@@ -107,19 +107,15 @@ form .field{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     gap: 0.5em;
-
 }
+
 .div-btn{
     height: 30%;
 }
 .div-inputs{
     height: 70%;
-}
-#right form .div-inp{
-    display: flex;
-    flex-direction: column;
-    gap:0.5em;
 }
 
 #right form .create-account{
@@ -136,10 +132,12 @@ form .field{
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    width: 80%;
 }
 .step.active{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap:1em;
 }
 .step{
