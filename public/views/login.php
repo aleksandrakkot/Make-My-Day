@@ -15,28 +15,36 @@
     </div>
     <div id="right">
         <div id="upper_btns">
-            <a id="sign_in" class="active" href="/login">Sign in</a>
-            <a id="sign_up" href="/registration">Sign up</a>
+            <div>
+                <a id="sign_in" class="active" href="/login">Sign in</a>
+            </div>
+            <div>
+                <a id="sign_up" href="/registration">Sign up</a>
+            </div>
         </div>
         <div id="head_welcome">
             <h1>Welcome</h1>
             <p>Please sign in.</p>
         </div>
         <form id="" action="login" method="POST">
-            <div class="div-inp">
-                <p>Email</p>
-                <input name="email" type="text">
-            </div>
-            <div class="div-inp">
-                <p>Password</p>
-                <div class="field">
-                    <input name="password" type="password">
-                    <span class="showBtn"><img src="https://img.icons8.com/material-sharp/24/000000/visible.png"/></span>
+            <div class="div-inputs">
+                <div class="div-inp">
+                    <p>Email</p>
+                    <input name="email" type="text">
+                </div>
+                <div class="div-inp">
+                    <p>Password</p>
+                    <div class="field">
+                        <input name="password" type="password">
+                        <span class="showBtn"><img src="https://img.icons8.com/material-sharp/24/000000/visible.png"/></span>
+                    </div>
                 </div>
             </div>
-            <button class = "btn" id="submit">Sign in</button>
-            <div class="create-account">
-                <p>Don't have an account? <a id="create-new-account" href="#">Create</a></p>
+            <div class="div-btn">
+                <button class = "btn" id="submit">Sign in</button>
+                <div class="create-account">
+                    <p>Don't have an account? <a id="create-new-account" href="#">Create</a></p>
+                </div>
             </div>
         </form>
     </div>

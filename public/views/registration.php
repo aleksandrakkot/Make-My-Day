@@ -16,54 +16,66 @@
     </div>
     <div id="right">
         <div id="upper_btns">
-            <a id="sign_in" href="/login">Sign in</a>
-            <a id="sign_up" class="active" href="/registration">Sign up</a>
+            <div>
+                <a id="sign_in" href="/login">Sign in</a>
+            </div>
+            <div>
+                <a id="sign_up" class="active" href="/registration">Sign up</a>
+            </div>
         </div>
         <div id="head_welcome">
             <h1>Welcome</h1>
             <p>Please create your account.</p>
         </div>
         <form class="multi-step-form" data-multi-step>
-            <div class="step" data-step>
-                <div class="div-inp">
-                    <p>Email:</p>
-                    <input name="email" type="text">
-                </div>
-                <div class="div-inp">
-                    <p>Nick:</p>
-                    <input name="nick" type="text">
-                </div>
-                <div class="div-inp">
-                    <p>Password:</p>
-                    <div class="field">
-                        <input name="password" type="password">
-                        <span class="showBtn"><img src="https://img.icons8.com/material-sharp/24/000000/visible.png"/></span>
+            <div class="step " data-step>
+                <div class="div-inputs">
+                    <div class="div-inp">
+                        <p>Email:</p>
+                        <input name="email" type="text">
+                    </div>
+                    <div class="div-inp">
+                        <p>Nick:</p>
+                        <input name="nick" type="text">
+                    </div>
+                    <div class="div-inp">
+                        <p>Password:</p>
+                        <div class="field">
+                            <input name="password" type="password">
+                            <span class="showBtn"><img src="https://img.icons8.com/material-sharp/24/000000/visible.png"/></span>
+                        </div>
+                    </div>
+                    <div class="div-inp">
+                        <p>Confirm password:</p>
+                        <input name="confirm_password" type="password">
                     </div>
                 </div>
-                <div class="div-inp">
-                    <p>Confirm password:</p>
-                    <input name="confirm_password" type="password">
+                <div class="div-btn">
+                    <button type="button" class="btn" data-next>Next</button>
                 </div>
-                <button type="button" class="btn" data-next>Next</button>
             </div>
             <div class="step" data-step>
-                <div class="div-inp2">
-                    <p>Imię:</p>
-                    <input name="imie" type="text">
+                <div class="div-inputs">
+                    <div class="div-inp2">
+                        <p>Imię:</p>
+                        <input name="imie" type="text">
+                    </div>
+                    <div class="div-inp2">
+                        <p>Nazwisko:</p>
+                        <input name="nazwisko" type="text">
+                    </div>
+                    <div class="div-inp2">
+                        <p>Country:</p>
+                        <select id="select-country">
+                            <option value="poland">Poland</option>
+                            <option value="poland">Poland</option>
+                            <option value="poland">Poland</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="div-inp2">
-                    <p>Nazwisko:</p>
-                    <input name="nazwisko" type="text">
+                <div class="div-btn">
+                    <button id="submit-reg" class="btn">Create account</button>
                 </div>
-                <div class="div-inp2">
-                    <p>Country:</p>
-                    <select id="select-country">
-                        <option value="poland">Poland</option>
-                        <option value="poland">Poland</option>
-                        <option value="poland">Poland</option>
-                    </select>
-                </div>
-                <button id="submit-reg" class="btn">Create account</button>
             </div>
         </form>
     </div>
