@@ -115,10 +115,10 @@ form .field{
     font-weight: 600;
 }
 
-div >img:nth-child(1){
+div#left >img:nth-child(1){
     width: 80%;
 }
 
-div >img:nth-child(2){
+div#left >img:nth-child(2){
     width: 60%;
 }
