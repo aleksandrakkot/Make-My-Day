@@ -170,6 +170,13 @@ li {
     border-bottom: 2px solid var(--orange-color);
 }
 
+#choose-top10 a.active, #choose-top10 a:hover {
+    height: 40%;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--orange-color);
+    transition: all 0.1s;
+}
+
 .plan-content {
     display: flex;
     flex-direction: row;
