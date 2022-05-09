@@ -182,7 +182,6 @@ li {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /*width: 70vw;*/
     height: auto;
     margin: 0.5em 2em 0.5em 2em;
 }

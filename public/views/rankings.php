@@ -64,7 +64,9 @@
     <div class="content">
         <header class="top-site">
             <div id="logo">
-                <img src="public/img/logo.svg">
+                <a href="/rankings">
+                    <img src="public/img/logo.svg">
+                </a>
             </div>
             <div id="username-logout">
                 <a href="#" class="username-button">
