@@ -42,3 +42,49 @@ function showCurrStep() {
         step.classList.toggle("active",index === currStep)
     })
 }
+
+
+const emailInput = document.querySelector('input[name=email]')
+const confirmedPasswordInput = multiStepForm.querySelector('input[name="confirm_password"]');
+
+function isEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+}
+
+function arePasswordsSame(password, confirmedPassword) {
+    return password === confirmedPassword;
+}
+
+function markValidation(elem, condition) {
+    !condition ? elem.classList.add('no-valid') : elem.classList.remove('no-valid');
+}
+
+function emailValidation() {
+    if(emailInput.value !== ''){
+        setTimeout(function () {
+                markValidation(emailInput, isEmail(emailInput.value));
+            },
+            1000
+        );
+    }else{
+        emailInput.classList.remove('no-valid');
+    }
+}
+
+function passwordValidation() {
+    if(passwordInput.value !== ''){
+        setTimeout(function (){
+                const condition = arePasswordsSame(
+                    passwordInput.value,
+                    confirmedPasswordInput.value
+                );
+                markValidation(confirmedPasswordInput,condition);
+            },
+            1000
+        )
+    }else{
+        confirmedPasswordInput.classList.remove('no-valid');
+    }
+}
+emailInput.addEventListener('keyup', emailValidation);
+confirmedPasswordInput.addEventListener('keyup', passwordValidation);
