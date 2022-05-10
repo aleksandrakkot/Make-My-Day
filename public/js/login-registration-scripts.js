@@ -42,3 +42,4 @@ function showCurrStep() {
         step.classList.toggle("active",index === currStep)
     })
 }
+

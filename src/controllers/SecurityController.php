@@ -57,4 +57,51 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/rankings");
     }
+
+    public function register()
+    {
+        if (!$this->isPost()) {
+            return $this->render('register');
+        }
+
+        $nick = $_POST['nick'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmedPassword = $_POST['confirm_password'];
+
+        if ($password !== $confirmedPassword) {
+            return $this->render('register', ['messages' => ['Please provide proper password']]);
+        }
+
+        if (strlen($password) < 8) {
+            return $this->render('register', ['messages' => ['Your password should contain more than 8 characters']]);
+        }
+
+        $npassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $user = new User($email, $npassword, $nick);
+
+        $info = $this->validateEmailNick($user, 'register');
+
+        $this->userRepository->addUser($user);
+
+        if ($info == null) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+
+    }
+
+    private function validateEmailNick(User $user, $tmp)
+    {
+        if ($this->userRepository->isEmailAlreadyExist($user->getEmail())) {
+            $this->render($tmp, ['messages' => ['User with this email already exist!']]);
+            die();
+        }
+        if ($this->userRepository->isNickAlreadyExist($user->getNick())) {
+            $this->render($tmp, ['messages' => ['User with this nick already exist!']]);
+            die();
+        }
+
+    }
 }
