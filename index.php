@@ -11,4 +11,5 @@ Router::post('registration', 'DefaultController');
 
 Router::get('rankings', 'DefaultController');
 Router::get('favourites', 'DefaultController');
+Router::get('dayplan', 'DefaultController');
 Router::run($path);

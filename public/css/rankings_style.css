@@ -35,7 +35,7 @@ li {
     position: absolute;
     top: 85%;
     left: 40px;
-    background-color: #F58800;
+    background-color: var(--orange-color);
 }
 
 .menu-icons {
@@ -149,7 +149,6 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 #choose-top10 {
@@ -175,6 +174,10 @@ li {
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--orange-color);
     transition: all 0.1s;
+}
+
+.go-to-dayplan {
+    text-decoration: none;
 }
 
 .plan-content {

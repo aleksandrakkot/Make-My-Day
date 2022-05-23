@@ -22,14 +22,14 @@
             </li>
             <li>
                 <div class="menu-icons">
-                <a class="nonactive" href="/discover">
+                <a class="nonactive" href="/yourplans">
                     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21.9817 17.5562C21.9816 19.3017 21.5388 21.0192 20.6941 22.5505C19.8494 24.0818 18.63 25.3778 17.148 26.3191C15.6661 27.2604 13.9692 27.8167 12.2136 27.937C10.4581 28.0573 8.70023 27.7376 7.10189 27.0073C5.50355 26.277 4.11609 25.1597 3.0672 23.7581C2.01832 22.3565 1.34173 20.7157 1.0997 18.9867C0.857672 17.2578 1.05799 15.4962 1.68221 13.8642C2.30644 12.2321 3.33451 10.7821 4.67179 9.64746" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M11.0293 13.7059C10.8075 14.16 10.6927 14.6582 10.6936 15.1628C10.6908 15.5817 10.7719 15.997 10.9322 16.3846C11.0926 16.7722 11.3289 17.1243 11.6276 17.4206C11.9262 17.7168 12.2812 17.9513 12.672 18.1103C13.0627 18.2694 13.4814 18.3498 13.9037 18.3471C14.3322 18.3471 14.7432 18.5159 15.0461 18.8165C15.3491 19.117 15.5193 19.5246 15.5193 19.9496V27.1716" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M1.14679 19.1588H5.0284C5.45973 19.1476 5.88894 19.2223 6.29071 19.3784C6.69247 19.5345 7.05865 19.7688 7.36764 20.0676C7.67662 20.3663 7.92216 20.7234 8.08977 21.1178C8.25737 21.5122 8.34365 21.9359 8.3435 22.3639V27.4629" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M27.7727 3.96541L25.6745 3.25778C25.5271 3.20809 25.3673 3.20764 25.2195 3.2565C25.0717 3.30535 24.9442 3.40082 24.8563 3.52834L23.3246 5.88015L14.9319 1.71766C14.2686 1.3299 13.5271 1.09235 12.7604 1.02202C11.9938 0.951691 11.2209 1.05031 10.4972 1.31083C9.77344 1.57135 9.11668 1.98732 8.57392 2.52898C8.03115 3.07065 7.61578 3.72462 7.35754 4.44409C7.28636 4.63074 7.25578 4.83021 7.26781 5.02941C7.27984 5.22861 7.3342 5.42303 7.42732 5.59992C7.52045 5.77681 7.65024 5.93216 7.80816 6.05578C7.96609 6.1794 8.14858 6.26849 8.34367 6.31722L13.8199 8.06546L14.3654 8.25278L15.3935 11.7493C15.4265 11.871 15.49 11.9825 15.578 12.0735C15.666 12.1644 15.7758 12.2319 15.8971 12.2696L18.3729 13.0605C18.4993 13.1013 18.6342 13.1093 18.7646 13.0836C18.8949 13.0579 19.0165 12.9994 19.1176 12.9138C19.2187 12.8282 19.2959 12.7182 19.3418 12.5945C19.3878 12.4707 19.4009 12.3374 19.38 12.2071L18.8345 9.60559H19.1912L24.5415 11.333C24.8922 11.4529 25.2764 11.4305 25.6104 11.2707C25.9445 11.1108 26.2013 10.8265 26.325 10.4797L28.2133 4.71466C28.2341 4.55897 28.2021 4.40086 28.1223 4.26521C28.0425 4.12956 27.9196 4.02409 27.7727 3.96541Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span class="preview">discover</span>
+                    <span class="preview">your plans</span>
                 </a></div>
             </li>
             <li>
@@ -94,40 +94,44 @@
                 <a id="top10-in-country" href="#" class="active">TOP 10 IN THE COUNTRY</a>
                 <a id="top10-in-world" href="#" >TOP 10 IN THE WORLD</a>
             </div>
-            <div class="plan-content">
-                <div class="plan-photo">
-                    <img src="public/img/example.png">
-                </div>
-                <div class="plan-info">
-                    <h1>Plan's name</h1>
-                    <h3>City, Country</h3>
-                    <h3>9am - 12 pm</h3>
-                    <h4>user</h4>
-                    <div class="likes">
-                        <h4>1,234</h4>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+            <a href="/dayplan" class="go-to-dayplan">
+                <div class="plan-content">
+                    <div class="plan-photo">
+                        <img src="public/img/example.png">
+                    </div>
+                    <div class="plan-info">
+                        <h1>Plan's name</h1>
+                        <h3>City, Country</h3>
+                        <h3>9am - 12 pm</h3>
+                        <h4>user</h4>
+                        <div class="likes">
+                            <h4>1,234</h4>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="plan-content">
-                <div class="plan-photo">
-                    <img src="public/img/example.png">
-                </div>
-                <div class="plan-info">
-                    <h1>Plan's name</h1>
-                    <h3>City, Country</h3>
-                    <h3>9am - 12 pm</h3>
-                    <h4>user</h4>
-                    <div class="likes">
-                        <h4>1,234</h4>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+            </a>
+            <a href="/dayplan" class="go-to-dayplan">
+                <div class="plan-content">
+                    <div class="plan-photo">
+                        <img src="public/img/example.png">
+                    </div>
+                    <div class="plan-info">
+                        <h1>Plan's name</h1>
+                        <h3>City, Country</h3>
+                        <h3>9am - 12 pm</h3>
+                        <h4>user</h4>
+                        <div class="likes">
+                            <h4>1,234</h4>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
