@@ -9,4 +9,5 @@ Router::post('login', 'SecurityController');
 
 Router::get('rankings', 'DefaultController');
 Router::get('favourites', 'DefaultController');
+Router::get('dayplan', 'DefaultController');
 Router::run($path);

@@ -3,6 +3,7 @@
 <head>
     <title>Rankings | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
+    <link rel="stylesheet" href="/public/css/dayplan_style.css">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
             </li>
             <li>
                 <div class="menu-icons">
-                    <a class="active" href="/favourites">
+                    <a class="nonactive" href="/favourites">
                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.6183 28L3.06716 15.5635C-3.21065 8.10165 6.01772 -6.22516 14.6183 5.36563C23.2189 -6.22516 32.4054 8.1514 26.1695 15.5635L14.6183 28Z" stroke="#F68802" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -91,44 +92,86 @@
             </div>
         </header>
         <div class="top10">
-            <a href="/dayplan" class="go-to-dayplan">
-                <div class="plan-content">
-                    <div class="plan-photo">
-                        <img src="public/img/example.png">
-                    </div>
-                    <div class="plan-info">
-                        <h1>Plan's name</h1>
-                        <h3>City, Country</h3>
-                        <h3>9am - 12 pm</h3>
-                        <h4>user</h4>
-                        <div class="likes">
-                            <h4>1,234</h4>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+            <div class="plan-content">
+                <div class="plan-photo">
+                    <img src="public/img/example.png">
+                </div>
+                <div class="plan-info">
+                    <h1>Plan's name</h1>
+                    <h3>City, Country</h3>
+                    <h3>9am - 12 pm</h3>
+                    <h4>user</h4>
+                    <div class="likes">
+                        <h4>1,234</h4>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                 </div>
-            </a>
-            <a href="/dayplan" class="go-to-dayplan">
-                <div class="plan-content">
-                    <div class="plan-photo">
-                        <img src="public/img/example.png">
+            </div>
+        </div>
+        <div class="detailed-plan-info">
+            <div class="description">
+                <h2>Description</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen Lorem Ipsum passages.</p>
+            </div>
+            <div class="plan-steps">
+                <h2>Day plan</h2>
+                <div class="step-info">
+                    <div class="number-time">
+                        <p id="number-of-step">1</p>
+                        <p id="#time">1pm - 2pm</p>
                     </div>
-                    <div class="plan-info">
-                        <h1>Plan's name</h1>
-                        <h3>City, Country</h3>
-                        <h3>9am - 12 pm</h3>
-                        <h4>user</h4>
-                        <div class="likes">
-                            <h4>1,234</h4>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                    <div class="step-description">
+                        <h3 id="step-name">Example name</h3>
+                        <p id="street">Times Square 12</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
                     </div>
+                    <img id="step-photo" src="public/img/example.png">
                 </div>
-            </a>
+                <div class="step-info">
+                    <div class="number-time">
+                        <p id="number-of-step2">2</p>
+                        <p id="#time">2pm - 3.30pm</p>
+                    </div>
+                    <div class="step-description">
+                        <h3 id="step-name">Example name</h3>
+                        <p id="street">Times Square 12</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
+                    </div>
+                    <img id="step-photo" src="public/img/example.png">
+                </div>
+                <div class="step-info">
+                    <div class="number-time">
+                        <p id="number-of-step3">3</p>
+                        <p id="#time">3.30pm - 4pm</p>
+                    </div>
+                    <div class="step-description">
+                        <h3 id="step-name">Example name</h3>
+                        <p id="street">Times Square 12</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
+                    </div>
+                    <img id="step-photo" src="public/img/example.png">
+                </div>
+                <div class="step-info">
+                    <div class="number-time">
+                        <p id="number-of-step4">4</p>
+                        <p id="#time">4pm - 5pm</p>
+                    </div>
+                    <div class="step-description">
+                        <h3 id="step-name">Example name</h3>
+                        <p id="street">Times Square 12</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
+                    </div>
+                    <img id="step-photo" src="public/img/example.png">
+                </div>
+            </div>
+            <div class="map">
+                <h2>Map</h2>
+            </div>
+            <div class="comments">
+                    <h2>Comments</h2>
+            </div>
         </div>
     </div>
 </div>

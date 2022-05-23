@@ -13,4 +13,9 @@ class DefaultController extends AppController {
     {
         $this->render('favourites');
     }
+
+    public function dayplan()
+    {
+        $this->render('dayplan');
+    }
 }
