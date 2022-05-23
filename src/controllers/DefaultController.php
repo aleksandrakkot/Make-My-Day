@@ -9,11 +9,6 @@ class DefaultController extends AppController {
         $this->render('rankings');
     }
 
-    public function registration()
-    {
-        $this->render('registration');
-    }
-
     public function favourites()
     {
         $this->render('favourites');

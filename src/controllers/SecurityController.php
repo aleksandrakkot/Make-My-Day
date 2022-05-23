@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../repository/CountryRepository.php';
 
 class SecurityController extends AppController
 {
@@ -13,7 +14,7 @@ class SecurityController extends AppController
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
-        $this->cookieName = 'user';
+        $this->countryRepository = new CountryRepository();
     }
 
     public function login()
@@ -60,28 +61,37 @@ class SecurityController extends AppController
 
     public function register()
     {
+
+        $countries = $this->countryRepository->getCountries();
         if (!$this->isPost()) {
-            return $this->render('register');
+            return $this->render('registration', ['country' => $countries]);
         }
 
         $nick = $_POST['nick'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirm_password'];
+        $imie = $_POST['imie'];
+        $nazwisko = $_POST['nazwisko'];
+        $country = $_POST['country'];
+
 
         if ($password !== $confirmedPassword) {
-            return $this->render('register', ['messages' => ['Please provide proper password']]);
+            return $this->render('registration', ['messages' => ['Please provide proper password'], 'country' => $countries]);
         }
 
         if (strlen($password) < 8) {
-            return $this->render('register', ['messages' => ['Your password should contain more than 8 characters']]);
+            return $this->render('registration', ['messages' => ['Your password should contain more than 8 characters'], 'country' => $countries]);
         }
 
-        $npassword = password_hash($password, PASSWORD_DEFAULT);
+        $npassword = password_hash($password, PASSWORD_BCRYPT);
 
         $user = new User($email, $npassword, $nick);
+        $user->setName($imie);
+        $user->setSurname($nazwisko);
+        $user->setCountry($country);
 
-        $info = $this->validateEmailNick($user, 'register');
+        $info = $this->validateEmailNick($user, 'registration', $countries);
 
         $this->userRepository->addUser($user);
 
@@ -92,14 +102,14 @@ class SecurityController extends AppController
 
     }
 
-    private function validateEmailNick(User $user, $tmp)
+    private function validateEmailNick(User $user, $tmp, $countries)
     {
         if ($this->userRepository->isEmailAlreadyExist($user->getEmail())) {
-            $this->render($tmp, ['messages' => ['User with this email already exist!']]);
+            $this->render($tmp, ['messages' => ['User with this email already exist!'],  'country' => $countries]);
             die();
         }
         if ($this->userRepository->isNickAlreadyExist($user->getNick())) {
-            $this->render($tmp, ['messages' => ['User with this nick already exist!']]);
+            $this->render($tmp, ['messages' => ['User with this nick already exist!'], 'country' => $countries]);
             die();
         }
 

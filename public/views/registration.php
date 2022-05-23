@@ -27,7 +27,7 @@
             <h1>Welcome</h1>
             <p>Please create your account.</p>
         </div>
-        <form class="multi-step-form" data-multi-step>
+        <form class="multi-step-form" action="register" method="POST" data-multi-step>
             <div class="step " data-step>
                 <div class="div-inputs">
                     <div class="div-inp">
@@ -66,10 +66,10 @@
                     </div>
                     <div class="div-inp2">
                         <p>Country:</p>
-                        <select id="select-country">
-                            <option value="poland">Poland</option>
-                            <option value="poland">Poland</option>
-                            <option value="poland">Poland</option>
+                        <select name = "country" id="select-country">
+                            <?php foreach ($country as $key): ?>
+                                <option value="<?= $key['country_id'] ?>"><?= $key['country_name'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>

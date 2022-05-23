@@ -19,7 +19,7 @@
                 <a id="sign_in" class="active" href="/login">Sign in</a>
             </div>
             <div>
-                <a id="sign_up" href="/registration">Sign up</a>
+                <a id="sign_up" href="/register">Sign up</a>
             </div>
         </div>
         <div id="head_welcome">
