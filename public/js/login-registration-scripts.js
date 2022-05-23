@@ -43,7 +43,6 @@ function showCurrStep() {
     })
 }
 
-
 const emailInput = document.querySelector('input[name=email]')
 const confirmedPasswordInput = multiStepForm.querySelector('input[name="confirm_password"]');
 
