@@ -145,7 +145,6 @@ li {
 
 .top10 {
     width: 100%;
-    height: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -213,3 +212,8 @@ li {
 .likes > svg {
     margin: 0.5em;
 }
+
+.likes > svg:hover, .likes.active{
+    fill: var(--orange-color);
+}
+

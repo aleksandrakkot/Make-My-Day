@@ -18,4 +18,9 @@ class DefaultController extends AppController {
     {
         $this->render('dayplan');
     }
+
+    public function createplan()
+    {
+        $this->render('createplan');
+    }
 }

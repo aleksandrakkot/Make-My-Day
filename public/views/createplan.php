@@ -4,6 +4,8 @@
     <title>Rankings | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
+    <link rel="stylesheet" href="/public/css/add_plan_style.css">
+
 </head>
 
 <body>
@@ -37,7 +39,7 @@
                 <div class="menu-icons">
                     <a class="nonactive" href="/favourites">
                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.6183 28L3.06716 15.5635C-3.21065 8.10165 6.01772 -6.22516 14.6183 5.36563C23.2189 -6.22516 32.4054 8.1514 26.1695 15.5635L14.6183 28Z" stroke="#F68802" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.6183 28L3.06716 15.5635C-3.21065 8.10165 6.01772 -6.22516 14.6183 5.36563C23.2189 -6.22516 32.4054 8.1514 26.1695 15.5635L14.6183 28Z" stroke="#000001" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span class="preview">favourites</span>
                     </a></div>
@@ -54,14 +56,6 @@
                 </div>
             </li>
         </ul>
-        <div class="menu-addplan">
-            <a class="nonactive" href="/createplan">
-                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M27.6111 13.4615C27.6111 12.9107 27.3923 12.3824 27.0028 11.9929C26.6133 11.6034 26.085 11.3846 25.5342 11.3846H17.2265V3.07692C17.2265 2.52609 17.0077 1.99782 16.6182 1.60832C16.2287 1.21882 15.7004 1 15.1495 1H13.0726C12.5218 1 11.9935 1.21882 11.604 1.60832C11.2145 1.99782 10.9957 2.52609 10.9957 3.07692V11.3846H2.68801C2.13717 11.3846 1.6089 11.6034 1.2194 11.9929C0.829902 12.3824 0.611084 12.9107 0.611084 13.4615V15.5385C0.611084 16.0893 0.829902 16.6176 1.2194 17.0071C1.6089 17.3966 2.13717 17.6154 2.68801 17.6154H10.9957V25.9231C10.9957 26.4739 11.2145 27.0022 11.604 27.3917C11.9935 27.7812 12.5218 28 13.0726 28H15.1495C15.7004 28 16.2287 27.7812 16.6182 27.3917C17.0077 27.0022 17.2265 26.4739 17.2265 25.9231V17.6154H25.5342C26.085 17.6154 26.6133 17.3966 27.0028 17.0071C27.3923 16.6176 27.6111 16.0893 27.6111 15.5385V13.4615Z" fill="white" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="preview">add plan</span>
-            </a>
-        </div>
     </nav>
     <div class="content">
         <header class="top-site">
@@ -91,87 +85,91 @@
                 </a>
             </div>
         </header>
-        <div class="top10">
-            <div class="plan-content">
-                <div class="plan-photo">
-                    <img src="public/img/example.png">
-                </div>
-                <div class="plan-info">
-                    <h1>Plan's name</h1>
-                    <h3>City, Country</h3>
-                    <h3>9am - 12 pm</h3>
-                    <h4>user</h4>
-                    <div class="likes">
-                        <h4>1,234</h4>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+            <form>
+                <div class="top10">
+                    <h1 id="create-plan">CREATE PLAN</h1>
+                    <div class="info">
+                        <div class="plan-photo ">
+                            <input type="file" name="file" id="file" class="inputfile">
+                            <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="plan-info">
+                            <div class="main-input name">
+                                <p>Plan's name</p>
+                                <input type="text">
+                            </div>
+                            <div class="main-input country">
+                                <p>Country</p>
+                                <select name = "country" id="select-country">
+                                    <?php foreach ($country as $key): ?>
+                                        <option value="<?= $key['country_id'] ?>"><?= $key['country_name'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="main-input city">
+                                <p>City</p>
+                                <select name = "city" id="select-city">
+                                    <?php foreach ($city as $key): ?>
+                                        <option value="<?= $key['city_id'] ?>"><?= $key['city_name'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="detailed-plan-info">
-            <div class="description">
-                <h2>Description</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen Lorem Ipsum passages.</p>
-            </div>
-            <div class="plan-steps">
-                <h2>Day plan</h2>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step">1</p>
-                        <p id="#time">1pm - 2pm</p>
+                <div class="detailed-plan-info">
+                    <div class="description">
+                        <h2>Description</h2>
+                        <textarea class="plan-desc" name="desc" placeholder="My day was really amazing..."></textarea>
                     </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
+                    <div class="plan-steps">
+                        <h2>Day plan</h2>
+                        <div class="step-info">
+                            <div class="number-time">
+                                <p id="number-of-step">1</p>
+                                <p>Start time - End time</p>
+                                <p id="#time"><input type="time"> - <input type="time"></p>
+                            </div>
+                            <div class="step-description">
+                                <div class="milestone-input name">
+                                    <p>Milestone name</p>
+                                    <input type="text">
+                                </div>
+                                <div class="milestone-input street">
+                                    <div class="street-info st">
+                                        <p>Street</p>
+                                        <input type="text">
+                                    </div>
+                                    <div class="street-info nb">
+                                        <p>Number</p>
+                                        <input type="number">
+                                    </div>
+                                </div>
+                                <div class="milestone-input description">
+                                    <p>Description</p>
+                                    <textarea name="desc" placeholder="It was fun..."></textarea>
+                                </div>
+                            </div>
+                            <div class="milestone-photo">
+                                <input type="file" name="file" id="file" class="inputfile">
+                                <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="milestone-buttons">
+                            <button id="add-next-milestone">Add next milestone</button>
+                            <button id="save">Save</button>
+                        </div>
                     </div>
-                    <img id="step-photo" src="public/img/example.png">
                 </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step2">2</p>
-                        <p id="#time">2pm - 3.30pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step3">3</p>
-                        <p id="#time">3.30pm - 4pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step4">4</p>
-                        <p id="#time">4pm - 5pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-            </div>
-            <div class="map">
-                <h2>Map</h2>
-            </div>
-            <div class="comments">
-                    <h2>Comments</h2>
-            </div>
+            </form>
         </div>
     </div>
 </div>

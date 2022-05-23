@@ -1,0 +1,165 @@
+:root{
+    --main-font : 'Inter', sans-serif;
+    --orange-color: #F58800;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--main-font);
+}
+
+.detailed-plan-info, .top10{
+    width: 50%;
+}
+
+.plan-content {
+    width: 100%;
+}
+
+.top10 {
+    margin: 0 auto;
+    display: flex;
+}
+
+.top10 .info {
+    display: flex;
+    width: 100%;
+}
+
+.plan-photo {
+    width: 50%;
+    margin-left: 0.5em;
+    height: 250px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plan-info{
+    margin-right: 0.5em;
+    margin-bottom: 0;
+    width: 50%;
+    padding-bottom: 1.5em;
+    border-bottom: 2px solid var(--orange-color);
+}
+
+.step-info {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    gap: 0.5em;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.plan-info.main-input{
+    height: 33.3%;
+}
+
+.plan-info p{
+    height: 50%;
+}
+.main-input input, select{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    padding: 0.5em 1em;
+}
+
+#create-plan {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    font-family: var(--main-font);
+}
+
+.description .plan-desc {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 200px;
+    text-align: start;
+    padding: 0.5em;
+    font-family: var(--main-font);
+    color: lightslategrey;
+}
+
+.number-time {
+    width: 25%;
+}
+
+.step-description {
+    width: 50%;
+}
+
+.milestone-photo{
+    width: 25%;
+}
+.milestone-photo label{
+    align-self: center;
+}
+.milestone-input.street .street-info.st{
+    width: 80%;
+}
+
+.milestone-input.street .street-info.nb{
+    width: 20%;
+}
+
+.milestone-photo {
+    height: 178px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.milestone-input.street {
+    display: flex;
+    gap: 0.5em;
+}
+
+.milestone-input input{
+    width: 100%;
+    padding: 0.5em 1em;;
+}
+
+.milestone-input.description textarea {
+    padding: 0.5em;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile > svg:hover{
+    fill: var(--orange-color);
+}
+
+.inputfile + label {
+    cursor: pointer;
+}
+
+.milestone-buttons {
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    margin-right: 0.5em;
+}
+
+.milestone-buttons button {
+    background-color: transparent;
+    width: 25%;
+    align-self: flex-end;
+    padding: 1em 0.5em;
+    font-size: 18px;
+    border: 5px solid var(--yellow-color);
+}
+
+.milestone-buttons #add-next-milestone , .milestone-buttons #save:hover{
+    background-color: var(--yellow-color);
+}
