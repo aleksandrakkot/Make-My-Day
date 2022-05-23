@@ -14,23 +14,24 @@ passwordInput.addEventListener('keyup', ()=>{
     }
 })
 
-const multiStepForm = document.querySelector('[data-multi-step]')
+const multiStepForm = document.querySelector("[data-multi-step]")
 const formSteps = [...multiStepForm.querySelectorAll('[data-step]')]
 
 
 let currStep = formSteps.findIndex( step => {
     return step.classList.contains("active")
 })
-console.log(currStep)
+
 if(currStep < 0){
     currStep = 0
-    formSteps[currStep].classList.add("active")
     showCurrStep()
 }
 
-multiStepForm.addEventListener("click", e =>{
+multiStepForm.addEventListener("click", e => {
+    let incre
     if (e.target.matches("[data-next]")){
-        currStep +=1
+        incre = 1
+        currStep += incre
         console.log(currStep)
     }
     showCurrStep()
@@ -38,6 +39,52 @@ multiStepForm.addEventListener("click", e =>{
 console.log(currStep)
 function showCurrStep() {
     formSteps.forEach((step,index) => {
-        formSteps[currStep].classList.toggle("active",index === currStep)
+        step.classList.toggle("active",index === currStep)
     })
 }
+
+
+const emailInput = document.querySelector('input[name=email]')
+const confirmedPasswordInput = multiStepForm.querySelector('input[name="confirm_password"]');
+
+function isEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+}
+
+function arePasswordsSame(password, confirmedPassword) {
+    return password === confirmedPassword;
+}
+
+function markValidation(elem, condition) {
+    !condition ? elem.classList.add('no-valid') : elem.classList.remove('no-valid');
+}
+
+function emailValidation() {
+    if(emailInput.value !== ''){
+        setTimeout(function () {
+                markValidation(emailInput, isEmail(emailInput.value));
+            },
+            1000
+        );
+    }else{
+        emailInput.classList.remove('no-valid');
+    }
+}
+
+function passwordValidation() {
+    if(passwordInput.value !== ''){
+        setTimeout(function (){
+                const condition = arePasswordsSame(
+                    passwordInput.value,
+                    confirmedPasswordInput.value
+                );
+                markValidation(confirmedPasswordInput,condition);
+            },
+            1000
+        )
+    }else{
+        confirmedPasswordInput.classList.remove('no-valid');
+    }
+}
+emailInput.addEventListener('keyup', emailValidation);
+confirmedPasswordInput.addEventListener('keyup', passwordValidation);
