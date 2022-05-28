@@ -12,4 +12,15 @@ class CountryRepository extends Repository
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCountryId(string $name)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT country_id FROM public.country WHERE country_name = :country ;
+        ');
+        $stmt->bindParam(':country', $name, PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data['country_id'];
+    }
 }

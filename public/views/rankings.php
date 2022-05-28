@@ -94,44 +94,27 @@
                 <a id="top10-in-country" href="#" class="active">TOP 10 IN THE COUNTRY</a>
                 <a id="top10-in-world" href="#" >TOP 10 IN THE WORLD</a>
             </div>
-            <a href="/dayplan" class="go-to-dayplan">
-                <div class="plan-content">
-                    <div class="plan-photo">
-                        <img src="public/img/example.png">
-                    </div>
-                    <div class="plan-info">
-                        <h1>Plan's name</h1>
-                        <h3>City, Country</h3>
-                        <h3>9am - 12 pm</h3>
-                        <h4>user</h4>
-                        <div class="likes">
-                            <h4>1,234</h4>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+            <?php foreach ($top_plans_country as $key): ?>
+                <a href="/dayplan/<?= $key->getDayPlanId() ?>" class="go-to-dayplan">
+                    <div class="plan-content">
+                        <div class="plan-photo">
+                            <img src="public/img/<?= $key->getImage() ?>">
+                        </div>
+                        <div class="plan-info">
+                            <h1><?= $key->getDayPlanName()?></h1>
+                            <h3><?= $key->getCity() ?>, <?= $key->getCountry()?></h3>
+                            <h3>9am - 12 pm</h3>
+                            <h4><?= $key->getCreatedBy() ?></h4>
+                            <div class="likes">
+                                <h4><?= $key->getLikes() ?></h4>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="/dayplan" class="go-to-dayplan">
-                <div class="plan-content">
-                    <div class="plan-photo">
-                        <img src="public/img/example.png">
-                    </div>
-                    <div class="plan-info">
-                        <h1>Plan's name</h1>
-                        <h3>City, Country</h3>
-                        <h3>9am - 12 pm</h3>
-                        <h4>user</h4>
-                        <div class="likes">
-                            <h4>1,234</h4>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </a>
+                </a>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

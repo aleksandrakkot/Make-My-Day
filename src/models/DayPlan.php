@@ -3,7 +3,8 @@
 class DayPlan
 {
     private $day_plan_id;
-    private $city_id;
+    private $city;
+    private $country;
     private $day_plan_name;
     private $likes;
     private $image;
@@ -12,9 +13,9 @@ class DayPlan
     private $created_by;
     private $state_flag;
 
-    public function __construct($city_id, $likes = 0, $day_plan_id = null)
+    public function __construct($city, $likes = 0, $day_plan_id = null)
     {
-        $this->city_id = $city_id;
+        $this->city = $city;
         $this->likes = $likes;
         $this->day_plan_id = $day_plan_id;
     }
@@ -29,15 +30,27 @@ class DayPlan
         $this->day_plan_id = $day_plan_id;
     }
 
-    public function getCityId()
+    public function getCity()
     {
-        return $this->city_id;
+        return $this->city;
     }
 
-    public function setCityId($city_id): void
+    public function setCity($city): void
     {
-        $this->city_id = $city_id;
+        $this->city = $city;
     }
+
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    public function setCountry($country): void
+    {
+        $this->country = $country;
+    }
+
+
 
     public function getDayPlanName()
     {

@@ -9,7 +9,8 @@ Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 Router::post('registration', 'DefaultController');
 
-Router::get('rankings', 'DefaultController');
+Router::get('rankings', 'DayPlanController');
+
 Router::get('favourites', 'DefaultController');
 Router::get('dayplan', 'DefaultController');
 Router::get('createplan', 'DefaultController');
