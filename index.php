@@ -13,5 +13,6 @@ Router::get('rankings', 'DayPlanController');
 
 Router::get('favourites', 'DefaultController');
 Router::get('dayplan', 'DefaultController');
+Router::get('search', 'DefaultController');
 Router::get('createplan', 'DefaultController');
 Router::run($path);

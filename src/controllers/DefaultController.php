@@ -10,6 +10,11 @@ class DefaultController extends AppController {
         $this->render('favourites');
     }
 
+    public function search()
+    {
+        $this->render('search');
+    }
+
     public function dayplan()
     {
         $this->render('dayplan');

@@ -1,6 +1,8 @@
 :root{
     --main-font : 'Inter', sans-serif;
     --orange-color: #F58800;
+    --light-orange-color: #F7A821;
+    --lightgreen-color: #256A67
 }
 
 .base-container {
@@ -217,3 +219,40 @@ li {
     fill: var(--orange-color);
 }
 
+.search-container, .search-container .search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.search-container {
+    width: 50%;
+    padding-top: 3em;
+    margin: 0 auto;
+}
+
+.search-container div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-container div > input {
+    width: 70%;
+    padding: 1em;
+    border: 1px solid black;
+
+}
+
+.search-container div > button {
+    width: 20%;
+    background-color: var(--light-orange-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-container div > button:hover {
+    background-color: var(--orange-color);
+}
