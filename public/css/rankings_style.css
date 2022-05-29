@@ -82,6 +82,13 @@ li {
     opacity: 1;
 }
 
+.top10-country-results, .top10-world-results {
+    display: none;
+}
+
+.top10-world-results.active , .top10-country-results.active {
+    display: block;
+}
 
 .content {
     width: 100%;
@@ -204,6 +211,8 @@ li {
     border-bottom: 2px solid var(--orange-color);
 }
 
+
+
 .likes {
     display: flex;
     flex-direction: row;
@@ -257,3 +266,4 @@ li {
 .search-container div > button:hover {
     background-color: var(--orange-color);
 }
+
