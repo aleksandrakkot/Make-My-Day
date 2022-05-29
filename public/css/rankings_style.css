@@ -222,12 +222,13 @@ li {
 .search-container, .search-container .search-bar {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
 }
 
 .search-container {
     width: 50%;
+    height: 95%;
     padding-top: 3em;
     margin: 0 auto;
 }
