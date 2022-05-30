@@ -1,35 +1,29 @@
-const allYourPlansResult = document.querySelector(".all-your-plans-result")
-const publicPlansResult = document.querySelector(".public-plans-result")
-const privatePlansResult = document.querySelector(".private-plans-result")
-const allYourPlansButton = document.querySelector("#all-your-plans")
-const publicPlansButton = document.querySelector("#public-plans")
-const privatePlansButton = document.querySelector("#private-plans")
+const yoursPlansResultDivs = document.querySelectorAll(".your-plan-result-divs")
+const yourPlansButtons = document.querySelectorAll(".your-plans-buttons")
 
-function setActiveOrNoActive(e,result){
-    let nextButton
-    let nextResult
+function showProperDivsYourPlans(e){
+    e.target.classList.add("active")
+    yourPlansButtons.forEach((btn)=>{
+        if(btn !== e.target && btn.classList.contains("active")){
+             btn.classList.remove("active")
+        }
+    })
 
-    e.target === allYourPlansButton ? nextButton = publicPlansButton : nextButton = allYourPlansButton
-    result === allYourPlansResult ? nextResult = publicPlansResult : nextResult = allYourPlansResult
+    yoursPlansResultDivs.forEach((div)=>{
+        if(div.classList.contains(e.target.getAttribute("id"))){
+            div.classList.add("active")
+        }
 
-    console.log("actual: " + result.className)
-    console.log("next: " + nextResult.className)
-
-    if (!e.target.classList.contains("active") && !result.classList.contains("active")) {
-        e.target.classList.add("active")
-        result.classList.add("active")
-    }
-
-    if (nextButton.classList.contains("active") && nextResult.classList.contains("active")) {
-        nextButton.classList.remove("active")
-        nextResult.classList.remove("active")
-    }
+        if(!div.classList.contains(e.target.getAttribute("id"))  && div.classList.contains("active")){
+            div.classList.remove("active")
+        }
+    })
 }
 
-allYourPlansButton.addEventListener("click" , (e) => {
-    setActiveOrNoActive(e,allYourPlansResult);
-});
 
-publicPlansButton.addEventListener("click",(e) => {
-    setActiveOrNoActive(e,publicPlansResult);
-});
+yourPlansButtons.forEach((btn) =>{
+    btn.addEventListener("click", (e) => {
+        showProperDivsYourPlans(e)
+    })
+})
+

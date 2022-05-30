@@ -93,18 +93,18 @@
         </header>
         <div class="top10">
             <div id="choose-top10">
-                <a id="all-your-plans" class="active">ALL YOUR PLANS</a>
-                <a id="public-plans" >PUBLIC PLANS</a>
-                <a id="private-plans">PRIVATE PLANS</a>
+                <a id="all-your-plans" class="your-plans-buttons active">ALL YOUR PLANS</a>
+                <a id="public-plans" class="your-plans-buttons">PUBLIC PLANS</a>
+                <a id="private-plans" class="your-plans-buttons">PRIVATE PLANS</a>
             </div>
-            <div class="all-your-plans-result active">
+            <div class="all-your-plans your-plan-result-divs active">
                 <a href="/dayplan" class="go-to-dayplan">
                     <div class="plan-content">
                         <div class="plan-photo">
                             <img src="public/img/example.png">
                         </div>
                         <div class="plan-info">
-                            <h1>Plan's name333</h1>
+                            <h1>All my plan's</h1>
                             <h3>City, Country</h3>
                             <h3>9am - 12 pm</h3>
                             <h4>user</h4>
@@ -118,14 +118,14 @@
                     </div>
                 </a>
             </div>
-            <div class="public-plans-result">
+            <div class="public-plans your-plan-result-divs">
                 <a href="/dayplan" class="go-to-dayplan">
                     <div class="plan-content">
                         <div class="plan-photo">
                             <img src="public/img/example.png">
                         </div>
                         <div class="plan-info">
-                            <h1>Plan's name213</h1>
+                            <h1>Public plan's</h1>
                             <h3>City, Country</h3>
                             <h3>9am - 12 pm</h3>
                             <h4>user</h4>
@@ -139,14 +139,14 @@
                     </div>
                 </a>
             </div>
-            <div class="private-plans-result">
+            <div class="private-plans your-plan-result-divs">
                 <a href="/dayplan" class="go-to-dayplan">
                     <div class="plan-content">
                         <div class="plan-photo">
                             <img src="public/img/example.png">
                         </div>
                         <div class="plan-info">
-                            <h1>Plan's name132</h1>
+                            <h1>Private plan's</h1>
                             <h3>City, Country</h3>
                             <h3>9am - 12 pm</h3>
                             <h4>user</h4>
