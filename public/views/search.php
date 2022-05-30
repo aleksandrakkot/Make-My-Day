@@ -3,6 +3,7 @@
 <head>
     <title>Search | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
+    <script type="text/javascript" src="/public/js/search.js" defer></script>
 </head>
 
 <body>
@@ -91,15 +92,37 @@
         </header>
         <section class="search-container">
             <div class="search-bar">
-                <div>
-                    <input placeholder="Krakow">
+                <div id="browser-div">
+                    <input name="browser" placeholder="Krakow">
                     <button>search</button>
                 </div>
             </div>
             <div class="search-results">
-
+                <p>Find the plans that suit you best!</p>
             </div>
         </section>
     </div>
 </div>
 </body>
+
+<template id="plan-template" class="top10">
+    <a href="/dayplan" class="go-to-dayplan">
+        <div class="plan-content">
+            <div class="plan-photo">
+                <img src="">
+            </div>
+            <div class="plan-info">
+                <h1 id="plans-name"></h1>
+                <h3 id="plans-location"></h3>
+                <h3 id="plans-time">8am - 15pm</h3>
+                <h4 id="plans-user"></h4>
+                <div class="likes">
+                    <h4 id="plans-likes"></h4>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+</template>

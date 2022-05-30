@@ -244,7 +244,7 @@ li {
     margin: 0 auto;
 }
 
-.search-container div {
+#browser-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -267,5 +267,16 @@ li {
 
 .search-container div > button:hover {
     background-color: var(--orange-color);
+}
+
+.search-bar {
+    height: 10%;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 100%;
 }
 

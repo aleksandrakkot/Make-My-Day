@@ -37,4 +37,18 @@ class DayPlanRepository extends Repository
 
         return $result;
 }
+
+    public function getPlansByCity($search)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.day_plan d
+                left join public.user u on u.user_id = d.created_by
+                left join public.city c on c.city_id = d.city_id
+            where c.city_name like :search
+        ');
+        $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
