@@ -94,11 +94,11 @@
             <div class="search-bar">
                 <div id="browser-div">
                     <input name="browser" placeholder="Krakow">
-                    <button>search</button>
+                    <button id="search-btn">search</button>
                 </div>
             </div>
             <div class="search-results">
-                <p>Find the plans that suit you best!</p>
+                <p class='plans-info'>Find the plans that suit you best!</p>
             </div>
         </section>
     </div>

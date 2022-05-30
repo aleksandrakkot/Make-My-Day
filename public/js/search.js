@@ -1,30 +1,43 @@
 const search = document.querySelector('input[name="browser"]')
 const planContainer = document.querySelector('.search-results');
 const a = document.querySelector('.go-to-dayplan')
+const buttonSearch = document.querySelector('#search-btn')
 
-search.addEventListener("keyup",function (e){
+buttonSearch.addEventListener("click",()=>{
+    handleSearching()
+})
+
+search.addEventListener("keyup", (e) => {
     if(e.key === "Enter"){
         e.preventDefault();
-        console.log(search.value)
-
-        const data = {search: this.value}
-
-        fetch("/searchPlans",{
-            method: "POST",
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(function (response){
-            console.log(response);
-            return response.json()
-        }).then(function (plans){
-            planContainer.innerHTML = ""
-            console.log(plans);
-            loadPlans(plans);
-        })
+        handleSearching(e)
     }
 })
+
+function handleSearching (){
+
+    const efect = search.value.toLowerCase();
+    const res = efect.substring(0,1).toUpperCase() + efect.substring(1)
+
+    console.log(res)
+    const data = {search: res}
+
+    fetch("/searchPlans",{
+        method: "POST",
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(function (response){
+        console.log(response);
+        return response.json()
+    }).then(function (plans){
+        planContainer.innerHTML = ""
+        console.log(plans);
+        plans.length !== 0 ?  loadPlans(plans) : planContainer.innerHTML = "<p class='plan-info'>No plans for this city...</p>"
+    })
+
+}
 
 function loadPlans(plans) {
     plans.forEach(plan => {
