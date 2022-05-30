@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Rankings | MakeMyDay</title>
+    <title>Favourites | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
 </head>
 
@@ -91,6 +91,9 @@
             </div>
         </header>
         <div class="top10">
+            <div id="choose-top10">
+                <a id="favourite-plan" class="active">FAVOURITE PLANS</a>
+            </div>
             <a href="/dayplan" class="go-to-dayplan">
                 <div class="plan-content">
                     <div class="plan-photo">

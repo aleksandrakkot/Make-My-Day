@@ -82,11 +82,11 @@ li {
     opacity: 1;
 }
 
-.top10-country-results, .top10-world-results {
+.top10-country-results, .top10-world-results, .all-your-plans-result, .public-plans-result, .private-plans-result  {
     display: none;
 }
 
-.top10-world-results.active , .top10-country-results.active {
+.top10-world-results.active , .top10-country-results.active, .all-your-plans-result.active, .public-plans-result.active, .private-plans-result.active {
     display: block;
 }
 
@@ -209,6 +209,8 @@ li {
     margin: 2em;
     padding-bottom: 0.5em;
     border-bottom: 2px solid var(--orange-color);
+    width: 40%;
+    max-width: 40%;
 }
 
 

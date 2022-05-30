@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Rankings | MakeMyDay</title>
+    <title>Day plan | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
 </head>
@@ -37,7 +37,7 @@
                 <div class="menu-icons">
                     <a class="nonactive" href="/favourites">
                         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.6183 28L3.06716 15.5635C-3.21065 8.10165 6.01772 -6.22516 14.6183 5.36563C23.2189 -6.22516 32.4054 8.1514 26.1695 15.5635L14.6183 28Z" stroke="#F68802" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.6183 28L3.06716 15.5635C-3.21065 8.10165 6.01772 -6.22516 14.6183 5.36563C23.2189 -6.22516 32.4054 8.1514 26.1695 15.5635L14.6183 28Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span class="preview">favourites</span>
                     </a></div>
@@ -67,7 +67,7 @@
         <header class="top-site">
             <div id="logo">
                 <a href="/rankings">
-                    <img src="public/img/logo.svg">
+                    <img src="/public/img/logo.svg">
                 </a>
             </div>
             <div id="username-logout">
