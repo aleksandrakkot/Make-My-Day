@@ -27,7 +27,7 @@ class DayPlanRepository extends Repository
             JOIN public.city c on dp.city_id = c.city_id
             JOIN public.country co on c.country_id = co.country_id
             JOIN public.user u on u.user_id = dp.created_by
-            AND dp.state_flag = 1
+            WHERE dp.state_flag = 1
             ORDER BY dp.likes desc limit 10;
         ');
 
