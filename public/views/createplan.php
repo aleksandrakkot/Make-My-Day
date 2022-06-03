@@ -67,7 +67,9 @@
             <div id="username-logout">
                 <a href="#" class="username-button">
                     <div class="username">
-                        <h5>username</h5>
+                        <h5><?=
+                            json_decode($_COOKIE['logUser'], true)['nick']?>
+                        </h5>
                         <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.24 15.6482C19.3178 15.6482 22.6235 12.4022 22.6235 8.39817C22.6235 4.3941 19.3178 1.14816 15.24 1.14816C11.1622 1.14816 7.85651 4.3941 7.85651 8.39817C7.85651 12.4022 11.1622 15.6482 15.24 15.6482Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M29.28 30.1482C28.3262 27.2278 26.4526 24.6802 23.9293 22.8728C21.406 21.0654 18.3634 20.0915 15.24 20.0915C12.1167 20.0915 9.07401 21.0654 6.5507 22.8728C4.02738 24.6802 2.15378 27.2278 1.20001 30.1482H29.28Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
