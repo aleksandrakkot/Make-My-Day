@@ -76,8 +76,8 @@
                         </svg>
                     </div>
                 </a>
-                <a href="#" class="log-out-button" onclick="logout()">
-                    <form class="log-out" id="logout" action="logOut" method="get">
+                <a href="/logout" class="log-out-button">
+                    <form class="log-out" id="logout" action="logout" method="get">
                         <svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.9645 13.4615H29.2074" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M24.8523 9L29.2074 13.4615L24.8523 17.9231" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>

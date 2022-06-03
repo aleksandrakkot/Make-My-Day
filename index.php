@@ -7,6 +7,8 @@ $path = parse_url( $path, PHP_URL_PATH);
 
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
+Router::get('logout', 'SecurityController');
+
 Router::post('registration', 'DefaultController');
 
 Router::get('rankings', 'DayPlanController');

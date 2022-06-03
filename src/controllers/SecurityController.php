@@ -114,6 +114,22 @@ class SecurityController extends AppController
 
     }
 
+    public function logout(){
+        session_start();
+
+        if (isset($_SESSION['user'])) {
+            unset($_SESSION['user']);
+        }
+        session_destroy();
+
+        if(isset($_COOKIE['logUser'])){
+            setcookie('logUser', '', 1);
+        }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
+    }
+
     private function validateEmailNick(User $user, $tmp, $countries)
     {
         if ($this->userRepository->isEmailAlreadyExist($user->getEmail())) {
