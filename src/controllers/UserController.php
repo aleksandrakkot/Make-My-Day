@@ -16,12 +16,4 @@ class UserController extends AppController
         $this->userRepository = new UserRepository();
         $this->user_array = json_decode($_COOKIE['logUser'], true);
     }
-
-    public function ifCookieExists(): bool
-    {
-        if (!isset($_COOKIE['logUser'])) {
-            return false;
-        }
-        return true;
-    }
 }

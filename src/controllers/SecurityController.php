@@ -25,6 +25,8 @@ class SecurityController extends AppController
         if (isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/rankings");
+        }else if(isset($_COOKIE['logUser'])){
+            setcookie('logUser', '', 1);
         }
 
         if (!$this->isPost()) {
@@ -61,6 +63,16 @@ class SecurityController extends AppController
 
     public function register()
     {
+
+        session_start();
+
+
+        if (isset($_SESSION['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/rankings");
+        }else if(isset($_COOKIE['logUser'])){
+            setcookie('logUser', '', 1);
+        }
 
         $countries = $this->countryRepository->getCountries();
         if (!$this->isPost()) {

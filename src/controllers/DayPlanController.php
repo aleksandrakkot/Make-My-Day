@@ -28,17 +28,23 @@ class DayPlanController extends AppController
 
     public function rankings()
     {
-        if ($this->user_array['email'] == null) {
-            return $this->render('login');
+
+        session_start();
+
+        if (!isset($_SESSION['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
         }
 
         $country_id = $this->countryReposotory->getCountryId($this->user_array['country_name']);
 
         $top_plans_country =$this->dayPlanRepository->getTopCountry($country_id);
 
+        $top_plans_world = $this->dayPlanRepository->getTopWorld();
 
 
-        $this->render('rankings', ['top_plans_country'=>$top_plans_country]);
+
+        $this->render('rankings', ['top_plans_country'=>$top_plans_country, 'top_plans_world'=>$top_plans_world]);
 
     }
 

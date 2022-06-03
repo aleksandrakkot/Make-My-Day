@@ -100,7 +100,7 @@
                     <a href="/dayplan/<?= $key->getDayPlanId() ?>" class="go-to-dayplan">
                         <div class="plan-content">
                             <div class="plan-photo">
-                                <img src="public/img/<?= $key->getImage() ?>">
+                                <img src="public/uploads/<?= $key->getImage() ?>">
                             </div>
                             <div class="plan-info">
                                 <h1><?= $key->getDayPlanName()?></h1>
@@ -119,12 +119,11 @@
                 <?php endforeach; ?>
             </div>
             <div class="top10-world-results">
-                <p>TOP 10 IN WORLD</p>
-                <?php foreach ($top_plans_country as $key): ?>
+                <?php foreach ($top_plans_world as $key): ?>
                     <a href="/dayplan/<?= $key->getDayPlanId() ?>" class="go-to-dayplan">
                         <div class="plan-content">
                             <div class="plan-photo">
-                                <img src="public/img/<?= $key->getImage() ?>">
+                                <img src="public/uploads/<?= $key->getImage() ?>">
                             </div>
                             <div class="plan-info">
                                 <h1><?= $key->getDayPlanName()?></h1>
