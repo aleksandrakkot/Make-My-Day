@@ -15,11 +15,6 @@ class DefaultController extends AppController {
         $this->render('search');
     }
 
-    public function dayplan()
-    {
-        $this->render('dayplan');
-    }
-
     public function createplan()
     {
         $this->render('createplan');

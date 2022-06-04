@@ -122,4 +122,17 @@ class UserRepository extends Repository{
         }
         return true;
     }
+
+    public function isAdmin($id){
+        $stmt = $this->database->connect()->prepare('
+            SELECT is_admin FROM public.user
+            WHERE user_id = :userid;
+        ');
+
+        $stmt->bindParam(':userid', $id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC)['is_admin'];
+    }
 }
