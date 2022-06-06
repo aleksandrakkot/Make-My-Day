@@ -1,0 +1,27 @@
+:root{
+    --main-font : 'Inter', sans-serif;
+    --orange-color: #F58800;
+}
+
+.change-account-details-buttons {
+    display: flex;
+    flex-direction: row;
+    gap:1em;
+    margin-right: 0.5em;
+    padding: 2em;
+    justify-content: space-between;
+}
+
+
+.change-account-details-buttons button {
+    background-color: transparent;
+    align-self: flex-end;
+    padding: 1em 0.5em;
+    font-size: 18px;
+    border: 5px solid var(--orange-color);
+    margin: 0em 2em 0em 2em;
+}
+
+.change-account-details-buttons #change-photo:hover, .change-account-details-buttons #change-password:hover{
+    background-color: var(--orange-color);
+}

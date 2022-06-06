@@ -70,7 +70,7 @@
                 </a>
             </div>
             <div id="username-logout">
-                <a href="#" class="username-button">
+                <a href="/userprofile" class="username-button">
                     <div class="username">
                         <h5><?=
                             json_decode($_COOKIE['logUser'], true)['nick']?>

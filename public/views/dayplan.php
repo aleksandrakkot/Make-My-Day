@@ -71,7 +71,7 @@
                 </a>
             </div>
             <div id="username-logout">
-                <a href="#" class="username-button">
+                <a href="/userprofile" class="username-button">
                     <div class="username">
                         <h5><?=
                             json_decode($_COOKIE['logUser'], true)['nick']?>
@@ -96,7 +96,7 @@
         <div class="top10">
             <div class="plan-content">
                 <div class="plan-photo">
-                    <img src="public/img/example.png">
+                    <img src="/public/uploads/example.png">
                 </div>
                 <div class="plan-info">
                     <h1>Plan's name</h1>

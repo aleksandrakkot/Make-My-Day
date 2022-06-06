@@ -29,4 +29,9 @@ class DefaultController extends AppController {
     {
         $this->render('yourplans');
     }
+
+    public function userprofile()
+    {
+        $this->render('userprofile');
+    }
 }

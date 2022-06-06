@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Rankings | MakeMyDay</title>
+    <title>Create plan | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
     <link rel="stylesheet" href="/public/css/add_plan_style.css">
@@ -65,7 +65,7 @@
                 </a>
             </div>
             <div id="username-logout">
-                <a href="#" class="username-button">
+                <a href="/userprofile" class="username-button">
                     <div class="username">
                         <h5><?=
                             json_decode($_COOKIE['logUser'], true)['nick']?>
