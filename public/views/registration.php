@@ -28,6 +28,12 @@
             <p>Please create your account.</p>
         </div>
         <form class="multi-step-form" action="register" method="POST" data-multi-step>
+            <?php if(isset($messages)){
+                foreach ($messages as $message ){
+                    echo $message;
+                }
+            }
+            ?>
             <div class="step " data-step>
                 <div class="div-inputs">
                     <div class="div-inp">

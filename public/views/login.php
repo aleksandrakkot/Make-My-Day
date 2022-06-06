@@ -27,6 +27,12 @@
             <p>Please sign in.</p>
         </div>
         <form class="login-form" id="" action="login" method="POST">
+            <?php if(isset($messages)){
+                foreach ($messages as $message ){
+                    echo $message;
+                }
+            }
+            ?>
             <div class="div-inputs">
                 <div class="div-inp">
                     <p>Email</p>
