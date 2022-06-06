@@ -43,29 +43,25 @@ p {
     align-items: center;
 }
 
-#time {
-    font-size: 50px;
-}
-
-#number-of-step {
+.step-info:nth-child(n + 2) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--yellow-color);
 }
 
-#number-of-step2 {
+.step-info:nth-child(n + 3) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--orange-color);
 }
 
-#number-of-step3 {
+.step-info:nth-child(n + 4) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: #8E7935;
 }
 
-#number-of-step4 {
+.step-info:nth-child(n + 5) #number-of-step{
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--lightgreen-color);;

@@ -11,6 +11,7 @@ class DayPlan
     private $map;
     private $description;
     private $created_by;
+    private $created_by_id;
     private $state_flag;
 
     public function __construct($city, $likes = 0, $day_plan_id = null)
@@ -122,6 +123,14 @@ class DayPlan
         $this->state_flag = $state_flag;
     }
 
+    public function getCreatedById()
+    {
+        return $this->created_by_id;
+    }
 
+    public function setCreatedById($created_by_id): void
+    {
+        $this->created_by_id = $created_by_id;
+    }
 
 }

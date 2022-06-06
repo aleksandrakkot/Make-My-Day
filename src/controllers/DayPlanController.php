@@ -63,4 +63,34 @@ class DayPlanController extends AppController
         }
     }
 
+    public function dayplan($id){
+
+        session_start();
+
+        if(!isset($_SESSION['user'])){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+        }
+        $userid = $this->userRepository->getUserId($_SESSION['user']);
+        $plan = $this->dayPlanRepository->getPlanById($id);
+        
+        //$isFav = $this->dayPlanRepository->isFavourite($id, $userid);
+
+        switch ($plan->getStateFlag()){
+            case 0:
+                if($userid == $plan->getCreatedById()) {
+                    $this->render('dayplan', ['plan' => $plan]);
+                }
+                break;
+            case 1:
+                $this->render('dayplan', ['plan' => $plan]);
+                break;
+            case 2:
+                if($this->userRepository->isAdmin($userid) || $userid == $plan->getCreatedById()){
+                    $this->render('dayplan', ['plan' => $plan]);
+                }
+                break;
+        }
+    }
+
 }

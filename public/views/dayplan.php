@@ -4,6 +4,7 @@
     <title>Day plan | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
+    <script src = "/public/js/milestones.js" type="text/javascript" defer></script>
 </head>
 
 <body>
@@ -71,7 +72,7 @@
                 </a>
             </div>
             <div id="username-logout">
-                <a href="/userprofile" class="username-button">
+                <a href="#" class="username-button">
                     <div class="username">
                         <h5><?=
                             json_decode($_COOKIE['logUser'], true)['nick']?>
@@ -96,15 +97,15 @@
         <div class="top10">
             <div class="plan-content">
                 <div class="plan-photo">
-                    <img src="/public/uploads/example.png">
+                    <img src="/public/uploads/<?= $plan->getImage() ?>">
                 </div>
                 <div class="plan-info">
-                    <h1>Plan's name</h1>
-                    <h3>City, Country</h3>
+                    <h1><?= $plan->getDayPlanName()?></h1>
+                    <h3><?= $plan->getCity() ?>, <?= $plan->getCountry()?></h3>
                     <h3>9am - 12 pm</h3>
-                    <h4>user</h4>
+                    <h4><?= $plan->getCreatedBy() ?></h4>
                     <div class="likes">
-                        <h4>1,234</h4>
+                        <h4><?= $plan->getLikes() ?></h4>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -115,62 +116,16 @@
         <div class="detailed-plan-info">
             <div class="description">
                 <h2>Description</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen Lorem Ipsum passages.</p>
+                <p><?= $plan->getDescription() ?></p>
             </div>
             <div class="plan-steps">
                 <h2>Day plan</h2>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step">1</p>
-                        <p id="#time">1pm - 2pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step2">2</p>
-                        <p id="#time">2pm - 3.30pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step3">3</p>
-                        <p id="#time">3.30pm - 4pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
-                <div class="step-info">
-                    <div class="number-time">
-                        <p id="number-of-step4">4</p>
-                        <p id="#time">4pm - 5pm</p>
-                    </div>
-                    <div class="step-description">
-                        <h3 id="step-name">Example name</h3>
-                        <p id="street">Times Square 12</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and...</p>
-                    </div>
-                    <img id="step-photo" src="public/img/example.png">
-                </div>
             </div>
+            <?php if ($plan->getMap()): ?>
             <div class="map">
                 <h2>Map</h2>
             </div>
+            <?php endif?>
             <div class="comments">
                     <h2>Comments</h2>
             </div>
@@ -178,3 +133,20 @@
     </div>
 </div>
 </body>
+
+</html>
+
+<template id="plan-milestone">
+    <div class="step-info">
+        <div class="number-time">
+            <p id="number-of-step"></p>
+            <p id="time"></p>
+        </div>
+        <div class="step-description">
+            <h3 id="step-name"></h3>
+            <p id="street"></p>
+            <p id = "description"></p>
+        </div>
+        <img id="step-photo" src="">
+    </div>
+</template>

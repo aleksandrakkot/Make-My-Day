@@ -70,4 +70,34 @@ class DayPlanRepository extends Repository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getPlanById($id){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.day_plan dp
+            JOIN public.city c on dp.city_id = c.city_id
+            JOIN public.country co on c.country_id = co.country_id
+            JOIN public.user u on u.user_id = dp.created_by
+            WHERE dp.day_plan_id = :planid;
+        ');
+
+        $stmt->bindParam(':planid', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $plan = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $day_plan_obj = new DayPlan($plan['city_name']);
+        $day_plan_obj->setCountry($plan['country_name']);
+        $day_plan_obj->setDayPlanName($plan['day_plan_name']);
+        $day_plan_obj->setLikes($plan['likes']);
+        $day_plan_obj->setCreatedBy($plan['nick']);
+        $day_plan_obj->setImage($plan['image']);
+        $day_plan_obj->setStateFlag($plan['state_flag']);
+        $day_plan_obj->setMap($plan['map']);
+        $day_plan_obj->setCreatedById($plan['created_by']);
+        $day_plan_obj->setDescription($plan['description']);
+        
+        return $day_plan_obj;
+    }
+
+
 }
