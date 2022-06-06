@@ -21,4 +21,5 @@ Router::get('search', 'DefaultController');
 Router::post('searchPlans', 'DayPlanController');
 Router::get('createplan', 'DefaultController');
 Router::get('yourplans', 'DefaultController');
+Router::get('userprofile', 'DefaultController');
 Router::run($path);
