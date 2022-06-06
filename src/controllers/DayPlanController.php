@@ -93,4 +93,14 @@ class DayPlanController extends AppController
         }
     }
 
+    public function yourplans()
+    {
+        $user_id = $this->userRepository->getUserId($this->user_array['email']);
+        $all_plans = $this->dayPlanRepository->getUserPlans($user_id);
+        $private_plans = $this->dayPlanRepository->getPublicPrivateUserPlans($user_id,0);
+        $public_plans = $this->dayPlanRepository->getPublicPrivateUserPlans($user_id, 1);
+
+        $this->render('yourplans', ['all_plans'=>$all_plans, 'private_plans'=>$private_plans, 'public_plans'=>$public_plans]);
+    }
+
 }

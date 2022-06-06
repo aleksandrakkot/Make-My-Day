@@ -99,5 +99,62 @@ class DayPlanRepository extends Repository
         return $day_plan_obj;
     }
 
+    public function getUserPlans(int $userid): array
+    {
+        $result = [];
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.day_plan dp
+                JOIN public.city c on dp.city_id = c.city_id
+                JOIN public.country co on c.country_id = co.country_id
+                JOIN public.user u on u.user_id = dp.created_by
+            where dp.created_by = :userid order by dp.likes desc
+        ');
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->execute();
+        $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        foreach ($plans as $plan) {
+            $result[$i] = new DayPlan($plan['city_name']);
+            $result[$i]->setDayPlanId($plan['day_plan_id']);
+            $result[$i]->setCountry($plan['country_name']);
+            $result[$i]->setDayPlanName($plan['day_plan_name']);
+            $result[$i]->setLikes($plan['likes']);
+            $result[$i]->setCreatedBy($plan['nick']);
+            $result[$i]->setImage($plan['image']);
+            $i += 1;
+        }
+        return $result;
+    }
+
+    public function getPublicPrivateUserPlans(int $userid, int $flag): array
+    {
+        $result = [];
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.day_plan dp
+                JOIN public.city c on dp.city_id = c.city_id
+                JOIN public.country co on c.country_id = co.country_id
+                JOIN public.user u on u.user_id = dp.created_by
+            where dp.created_by = :userid and dp.state_flag = :flag order by dp.likes desc
+        ');
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindParam(':flag', $flag, PDO::PARAM_INT);
+        $stmt->execute();
+        $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        foreach ($plans as $plan) {
+            $result[$i] = new DayPlan($plan['city_name']);
+            $result[$i]->setDayPlanId($plan['day_plan_id']);
+            $result[$i]->setCountry($plan['country_name']);
+            $result[$i]->setDayPlanName($plan['day_plan_name']);
+            $result[$i]->setLikes($plan['likes']);
+            $result[$i]->setCreatedBy($plan['nick']);
+            $result[$i]->setImage($plan['image']);
+            $i += 1;
+        }
+        return $result;
+    }
+
 
 }
