@@ -190,6 +190,7 @@ li {
 }
 
 .plan-content {
+    max-width: 970px;
     display: flex;
     flex-direction: row;
     justify-content: center;
