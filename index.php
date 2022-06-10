@@ -9,6 +9,11 @@ Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
 Router::get('logout', 'SecurityController');
 
+
+Router::get('userprofile', 'UserController');
+Router::get('changePassword', 'UserController');
+Router::post('changePassword', 'UserController');
+
 Router::post('registration', 'DefaultController');
 
 Router::get('rankings', 'DayPlanController');
@@ -21,5 +26,4 @@ Router::get('search', 'DefaultController');
 Router::post('searchPlans', 'DayPlanController');
 Router::get('createplan', 'DefaultController');
 Router::get('yourplans', 'DayPlanController');
-Router::get('userprofile', 'DefaultController');
 Router::run($path);

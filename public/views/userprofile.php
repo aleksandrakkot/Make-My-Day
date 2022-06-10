@@ -101,13 +101,19 @@
             <div class="all-your-plans your-plan-result-divs active">
                 <div class="account-details plan-content">
                     <div class="plan-info">
-                        <h1>Nickname</h1>
-                        <p>Name, Surname</p>
-                        <p>Country</p>
-                        <p>E-mail</p>
+                        <h1><?= $user->getNick()?></h1>
+                        <p><?= $user->getName()?> <?= $user->getSurname()?></p>
+                        <p><?= $user->getCountry()?></p>
+                        <p><?= $user->getEmail()?></p>
                     </div>
                     <form class="pswd-form" action="changePassword" method="POST">
                         <div class = "div-input-pswd">
+                            <div class="div-pswd">
+                                <p>Old password:</p>
+                                <div class="field">
+                                    <input name="old_password" type="password">
+                                </div>
+                            </div>
                             <div class="div-pswd">
                                 <p>Password:</p>
                                 <div class="field">
@@ -118,6 +124,14 @@
                             <div class="div-pswd">
                                 <p>Confirm password:</p>
                                 <input name="confirm_password" type="password">
+                            </div>
+                            <div class = "messsage">
+                                <?php if(isset($messages)){
+                                    foreach ($messages as $message ){
+                                        echo $message;
+                                    }
+                                }
+                                ?>
                             </div>
                             <div class="change-account-details-buttons">
                                 <button id="change-password">Change password</button>

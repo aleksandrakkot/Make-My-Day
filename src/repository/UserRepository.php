@@ -74,6 +74,18 @@ class UserRepository extends Repository{
         ]);
     }
 
+    public function updatePassword($npass){
+        $id = $this->getUserId($_SESSION['user']);
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.user 
+            SET password = :npass
+            WHERE user_id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':npass', $npass, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
     public function getUserId(string $email): int
     {
 
