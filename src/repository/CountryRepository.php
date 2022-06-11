@@ -13,6 +13,15 @@ class CountryRepository extends Repository
         return $stmt;
     }
 
+    public function getCities()
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.city ORDER BY city_name ASC;
+        ');
+        $stmt->execute();
+        return $stmt;
+    }
+
     public function getCountryId(string $name)
     {
         $stmt = $this->database->connect()->prepare('
@@ -22,5 +31,18 @@ class CountryRepository extends Repository
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data['country_id'];
+    }
+
+    public function getCityId(string $name)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT city_id FROM public.city c
+            WHERE c.city_name = :cityy
+        ');
+        $stmt->bindParam(':cityy', $name, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data['city_id'];
     }
 }

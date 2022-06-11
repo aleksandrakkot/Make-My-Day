@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
     <link rel="stylesheet" href="/public/css/add_plan_style.css">
-
+    <script src = "/public/js/createplan.js" type="text/javascript" defer></script>
 </head>
 
 <body>
@@ -87,7 +87,7 @@
                 </a>
             </div>
         </header>
-            <form>
+            <form class="create_plan_form" action="addplan/1" method="POST" enctype="multipart/form-data">
                 <div class="top10">
                     <h1 id="create-plan">CREATE PLAN</h1>
                     <div class="info">
@@ -102,12 +102,12 @@
                         <div class="plan-info">
                             <div class="main-input name">
                                 <p>Plan's name</p>
-                                <input type="text">
+                                <input name="day_plan_name" type="text">
                             </div>
                             <div class="main-input country">
                                 <p>Country</p>
                                 <select name = "country" id="select-country">
-                                    <?php foreach ($country as $key): ?>
+                                    <?php foreach ($countries as $key): ?>
                                         <option value="<?= $key['country_id'] ?>"><?= $key['country_name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -115,7 +115,7 @@
                             <div class="main-input city">
                                 <p>City</p>
                                 <select name = "city" id="select-city">
-                                    <?php foreach ($city as $key): ?>
+                                    <?php foreach ($cities as $key): ?>
                                         <option value="<?= $key['city_id'] ?>"><?= $key['city_name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -126,7 +126,7 @@
                 <div class="detailed-plan-info">
                     <div class="description">
                         <h2>Description</h2>
-                        <textarea class="plan-desc" name="desc" placeholder="My day was really amazing..."></textarea>
+                        <textarea name="description" class="plan-desc" placeholder="My day was really amazing..."></textarea>
                     </div>
                     <div class="plan-steps">
                         <h2>Day plan</h2>
@@ -134,30 +134,30 @@
                             <div class="number-time">
                                 <p id="number-of-step">1</p>
                                 <p>Start time - End time</p>
-                                <p id="#time"><input type="time"> - <input type="time"></p>
+                                <p id="#time"><input name="milestone_start_time" type="time"> - <input name="milestone_end_time" type="time"></p>
                             </div>
                             <div class="step-description">
                                 <div class="milestone-input name">
                                     <p>Milestone name</p>
-                                    <input type="text">
+                                    <input name="milestone_location_name" type="text">
                                 </div>
                                 <div class="milestone-input street">
                                     <div class="street-info st">
                                         <p>Street</p>
-                                        <input type="text">
+                                        <input name="$milestone_street_name" type="text">
                                     </div>
                                     <div class="street-info nb">
                                         <p>Number</p>
-                                        <input type="number">
+                                        <input name="$milestone_street_number"  type="number">
                                     </div>
                                 </div>
                                 <div class="milestone-input description">
                                     <p>Description</p>
-                                    <textarea name="desc" placeholder="It was fun..."></textarea>
+                                    <textarea name="milestone_description" placeholder="It was fun..."></textarea>
                                 </div>
                             </div>
                             <div class="milestone-photo">
-                                <input type="file" name="file" id="file" class="inputfile">
+                                <input type="file" name="files" id="file" class="inputfile">
                                 <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
@@ -165,10 +165,10 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="milestone-buttons">
-                            <button id="add-next-milestone">Add next milestone</button>
-                            <button id="save">Save</button>
-                        </div>
+                    </div>
+                    <div class="milestone-buttons">
+                        <button type="button" id="add-next-milestone">Add next milestone</button>
+                        <button id="save" type="submit">Save</button>
                     </div>
                 </div>
             </form>
@@ -176,3 +176,41 @@
     </div>
 </div>
 </body>
+
+<template id="template_milestone">
+    <div class="step-info">
+        <div class="number-time">
+            <p id="number-of-step">1</p>
+            <p>Start time - End time</p>
+            <p id="#time"><input name="milestone_start_time" type="time"> - <input name="milestone_end_time" type="time"></p>
+        </div>
+        <div class="step-description">
+            <div class="milestone-input name">
+                <p>Milestone name</p>
+                <input name="milestone_location_name" type="text">
+            </div>
+            <div class="milestone-input street">
+                <div class="street-info st">
+                    <p>Street</p>
+                    <input name="$milestone_street_name" type="text">
+                </div>
+                <div class="street-info nb">
+                    <p>Number</p>
+                    <input name="$milestone_street_number"  type="number">
+                </div>
+            </div>
+            <div class="milestone-input description">
+                <p>Description</p>
+                <textarea name="milestone_description" placeholder="It was fun..."></textarea>
+            </div>
+        </div>
+        <div class="milestone-photo">
+            <input type="file" name="files" id="file" class="inputfile">
+            <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </label>
+        </div>
+    </div>
+</template>

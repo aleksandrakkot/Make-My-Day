@@ -15,14 +15,18 @@ class DayPlanController extends AppController
 
     private DayPlanRepository $dayPlanRepository;
     private UserRepository $userRepository;
+    private CountryRepository $countryRepository;
+    private MilestoneRepository $milestoneRepository;
     private $user_array;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->dayPlanRepository = new DayPlanRepository();
         $this->userRepository = new UserRepository();
-        $this->countryReposotory = new CountryRepository();
+        $this->countryRepository = new CountryRepository();
+        $this->milestoneRepository = new MilestoneRepository();
         $this->user_array = json_decode($_COOKIE['logUser'], true);
     }
 
@@ -36,7 +40,7 @@ class DayPlanController extends AppController
             header("Location: {$url}/login");
         }
 
-        $country_id = $this->countryReposotory->getCountryId($this->user_array['country_name']);
+        $country_id = $this->countryRepository->getCountryId($this->user_array['country_name']);
 
         $top_plans_country =$this->dayPlanRepository->getTopCountry($country_id);
 
@@ -102,5 +106,122 @@ class DayPlanController extends AppController
 
         $this->render('yourplans', ['all_plans'=>$all_plans, 'private_plans'=>$private_plans, 'public_plans'=>$public_plans]);
     }
+
+    public function createplan(){
+        $countries= $this->countryRepository->getCountries();
+        $cities= $this->countryRepository->getCities();
+
+        $this->render('createplan', ['countries' => $countries, 'cities' => $cities]);
+    }
+
+    public function addplan($steps) {
+        if ($this->isPost()) {
+            if(is_uploaded_file($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+                move_uploaded_file(
+                    $_FILES['file']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
+                );
+            }
+//            if($this->validate($_FILES['files']) && $this->validate($_FILES['files']) ){
+//                move_uploaded_file(
+//                    $_FILES['files']['tmp_name'],
+//                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['files']['name']
+//                );
+//            }
+
+            $post_city = $_POST['city'];
+            $post_country = $_POST['country'];
+
+            //TO DO: naprawić wyświetlanie $_FILES ->  nie wiem jak wiele zdjęć wyświetlać tam gdzie powinny
+            $post_image = $_FILES['file']['name'];
+            $post_day_plan_name = $_POST['day_plan_name'];
+            $post_day_plan_description = $_POST['description'];
+
+            $user_id = $this->userRepository->getUserId($this->user_array['email']);
+
+            $day_plan = new DayPlan($post_city);
+            $day_plan->setImage($post_image);
+            $day_plan->setCreatedBy($user_id);
+            $day_plan->setCountry($post_country);
+            $day_plan->setDayPlanName($post_day_plan_name);
+            $day_plan->setDescription($post_day_plan_description);
+
+            $post_milestone_location_name[0] = $_POST['milestone_location_name'];
+            $post_milestone_image[0] = $_POST['file']['name'];
+            $post_milestone_street_name[0] = $_POST['milestone_street_name'];
+            $post_milestone_street_number[0] = $_POST['milestone_street_number'];
+            $post_milestone_description[0] = $_POST['milestone_description'];
+            $post_milestone_start_time[0] = $_POST['milestone_start_time'];
+            $post_milestone_end_time[0] = $_POST['milestone_end_time'];
+
+            $this->dayPlanRepository->addNewPlan($day_plan);
+
+            $plan_id = $this->dayPlanRepository->getPlanId($day_plan);
+
+            $mil1 = new Milestone($post_milestone_location_name[0]);
+            $mil1->setStreetName($post_milestone_street_name[0]);
+            $mil1->setImage($post_milestone_image[0]);
+            $mil1->setStreetNumber($post_milestone_street_number[0]);
+            $mil1->setMilestoneDescription($post_milestone_description[0]);
+            $mil1->setMilestoneStartTime($post_milestone_start_time[0]);
+            $mil1->setMilestoneEndTime($post_milestone_end_time[0]);
+            $mil1->setDayPlanId($plan_id);
+
+            $this->milestoneRepository->addMilestone($mil1);
+
+            if ($steps > 1) {
+                for ($i = 1; $i < $steps; $i++) {
+                    $wart = $i + 1;
+                    $post_milestone_location_name[$i] = $_POST['milestone_location_name'.$wart];
+                    $post_milestone_image[$i] = $_POST['files']['name'];
+                    $post_milestone_street_name[$i] = $_POST['milestone_street_name'.$wart];
+                    $post_milestone_street_number[$i] = $_POST['milestone_street_number'.$wart];
+                    $post_milestone_description[$i] = $_POST['milestone_description'.$wart];
+                    $post_milestone_start_time[$i] = $_POST['milestone_start_time'.$wart];
+                    $post_milestone_end_time[$i] = $_POST['milestone_end_time'.$wart];
+
+                    $mil = new Milestone($post_milestone_location_name[$i]);
+                    $mil->setStreetName($post_milestone_street_name[$i]);
+                    $mil->setImage($post_milestone_image[$i]);
+                    $mil->setStreetNumber($post_milestone_street_number[$i]);
+                    $mil->setMilestoneDescription($post_milestone_description[$i]);
+                    $mil->setMilestoneStartTime($post_milestone_start_time[$i]);
+                    $mil->setMilestoneEndTime($post_milestone_end_time[$i]);
+                    $mil->setDayPlanId($plan_id);
+
+                    $this->milestoneRepository->addMilestone($mil);
+                }
+            }
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/createplan");
+        }
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/yourplans");
+    }
+
+    private function validate(array $file): bool
+    {
+        if ($file['size'] > self::MAX_FILE_SIZE) {
+            $this->messages[] = 'File is too large';
+            return false;
+        }
+        if (!isset($file['type']) && !in_array($file['type'], self::SUPPORTED_TYPES)) {
+            $this->messages[] = 'File type is not supported';
+            return false;
+        }
+        return true;
+    }
+
+    private function getPlansId(array $plans): array
+    {
+        $result = [];
+        $i = 0;
+        foreach ($plans as $p) {
+            $id = $p->getId();
+            $result[$i] = [$id, $this->milestoneRepository->countMilestones($id)];
+        }
+        return $result;
+    }
+
 
 }
