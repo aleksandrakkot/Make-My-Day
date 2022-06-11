@@ -7,19 +7,16 @@ function showProperDivsYourPlans(e){
     yourPlansButtons.forEach((btn)=>{
         if(btn !== e.target && btn.classList.contains("active")){
             btn.classList.remove("active")
-            plansDiv.style.display='none';
         }
     })
 
     yoursPlansResultDivs.forEach((div)=>{
         if(div.classList.contains(e.target.getAttribute("id"))){
             div.classList.add("active")
-            plansDiv.style.display='flex';
         }
 
         if(!div.classList.contains(e.target.getAttribute("id"))  && div.classList.contains("active")){
             div.classList.remove("active")
-            plansDiv.style.display='none';
         }
     })
 }
