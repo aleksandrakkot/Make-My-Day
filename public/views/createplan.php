@@ -105,7 +105,7 @@
                         <div class="plan-info">
                             <div class="main-input name">
                                 <p>Plan's name</p>
-                                <input name="day_plan_name" type="text">
+                                <input name="day_plan_name" required type="text">
                             </div>
                             <div class="main-input country">
                                 <p>Country</p>
@@ -137,7 +137,7 @@
                             <div class="number-time">
                                 <p id="number-of-step">1</p>
                                 <p>Start time - End time</p>
-                                <p id="#time"><input name="milestone_start_time" type="time"> - <input name="milestone_end_time" type="time"></p>
+                                <p id="#time"><input name="milestone_start_time" required type="time"> - <input name="milestone_end_time" required type="time"></p>
                             </div>
                             <div class="step-description">
                                 <div class="milestone-input name">
@@ -151,7 +151,7 @@
                                     </div>
                                     <div class="street-info nb">
                                         <p>Number</p>
-                                        <input name="milestone_street_number"  type="number">
+                                        <input name="milestone_street_number"  type="text">
                                     </div>
                                 </div>
                                 <div class="milestone-input description">
