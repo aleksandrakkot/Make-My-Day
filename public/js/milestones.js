@@ -42,7 +42,12 @@ const createMilestone = (milestone, num) => {
     name.textContent = milestone.location_name;
 
     const location = clone.querySelector("#street");
-    location.textContent = milestone.street_name.split(":") + " " + milestone.street_number;
+
+    try{
+        location.textContent = milestone.street_name.split(":") + " " + milestone.street_number;
+    }catch(e){
+
+    }
 
     const desc = clone.querySelector("#description");
     desc.textContent = milestone.milestone_description;
