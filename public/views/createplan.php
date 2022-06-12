@@ -95,7 +95,7 @@
                     <h1 id="create-plan">CREATE PLAN</h1>
                     <div class="info">
                         <div class="plan-photo ">
-                            <input type="file" name="file[]" id="file" class="inputfile">
+                            <input type="file" name="file0" id="file" class="inputfile">
                             <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,14 +159,6 @@
                                     <textarea name="milestone_description" placeholder="It was fun..."></textarea>
                                 </div>
                             </div>
-                            <div class="milestone-photo">
-                                <input type="file" name="file[]" id="file" class="inputfile">
-                                <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </label>
-                            </div>
                         </div>
                     </div>
                     <div class="milestone-buttons">
@@ -206,14 +198,6 @@
                 <p>Description</p>
                 <textarea name="milestone_description" placeholder="It was fun..."></textarea>
             </div>
-        </div>
-        <div class="milestone-photo">
-            <input type="file" name="file[]" id="file" class="inputfile">
-            <label for="file"><svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M28 7.23077C28 6.67993 27.7812 6.15166 27.3917 5.76216C27.0022 5.37266 26.4739 5.15385 25.9231 5.15385H21.7692L18.6538 1H10.3462L7.23077 5.15385H3.07692C2.52609 5.15385 1.99782 5.37266 1.60832 5.76216C1.21882 6.15166 1 6.67993 1 7.23077V19.6923C1 20.2431 1.21882 20.7714 1.60832 21.1609C1.99782 21.5504 2.52609 21.7692 3.07692 21.7692H25.9231C26.4739 21.7692 27.0022 21.5504 27.3917 21.1609C27.7812 20.7714 28 20.2431 28 19.6923V7.23077Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M14.5002 17.0962C17.0811 17.0962 19.1733 15.0039 19.1733 12.4231C19.1733 9.84221 17.0811 7.75 14.5002 7.75C11.9194 7.75 9.82715 9.84221 9.82715 12.4231C9.82715 15.0039 11.9194 17.0962 14.5002 17.0962Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </label>
         </div>
     </div>
 </template>

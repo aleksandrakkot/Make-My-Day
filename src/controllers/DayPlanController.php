@@ -121,23 +121,17 @@ class DayPlanController extends AppController
 
 
             $files_array = [];
-
-            if(isset($_FILES['file'])) {
-
-                foreach($_FILES['file']['tmp_name'] as $key => $tmp_name)
-                {
+                if (isset($_FILES['file'])) {
                     var_dump($_FILES['file']['name']);
-                    $file_name = $_FILES['file']['name'][$key];
+                    $file_name = $_FILES['file']['name'];
                     array_push($files_array, $file_name);
-                    $file_tmp =$_FILES['file']['tmp_name'][$key];
+                    $file_tmp =$_FILES['file']['tmp_name'];
                     move_uploaded_file( $file_tmp,  dirname(__DIR__).self::UPLOAD_DIRECTORY.$file_name);
                 }
-            }
 
             $post_city = $_POST['city'];
             $post_country = $_POST['country'];
 
-            //TO DO: naprawić wyświetlanie $_FILES ->  nie wiem jak wiele zdjęć wyświetlać tam gdzie powinny
             $post_image = $files_array[0];
             $post_day_plan_name = $_POST['day_plan_name'];
             $post_day_plan_description = $_POST['description'];
