@@ -25,7 +25,7 @@ class MilestoneRepository extends Repository
         $map = false;
         if($coordinates['lat']) {
             $map = true;
-            $coordinates = "[".$coordinates['lng'].", ".$coordinates['lat']."]";
+            $coordinates = "[".$coordinates['lng'].",".$coordinates['lat']."]";
         } else{
             $coordinates = null;
         }
@@ -51,8 +51,9 @@ class MilestoneRepository extends Repository
     
     private function getCooridinates($street,  $num, $city){
 
-        $street = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $street);
-        $city = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $city);
+        $street_tmp = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $street);
+
+        if($street_tmp != false) $street = $street_tmp;
 
         $url = "https://api.opencagedata.com/geocode/v1/json?q=".$street."%20".$num."%2C%20".$city."&key=".MAP_API."&language=en&pretty=1&no_annotations=1";
 
