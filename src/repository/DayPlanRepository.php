@@ -160,7 +160,7 @@ class DayPlanRepository extends Repository
     {
         $stmt = $this->database->connect()->prepare('
             INSERT INTO public.day_plan (city_id, day_plan_name, image, description, created_by, state_flag)
-            VALUES (?, ?, ?, ?, ?, 0)
+            VALUES (?, ?, ?, ?, ?, 0) returning day_plan_id
         ');
 
         $stmt->execute([
@@ -170,30 +170,8 @@ class DayPlanRepository extends Repository
             $day_plan->getDescription(),
             $day_plan->getCreatedBy()
         ]);
-    }
-
-    public function getPlanId(DayPlan $day_plan)
-    {
-        $city = $day_plan->getCity();
-        $plan_name = $day_plan->getDayPlanName();
-        $image = $day_plan->getImage();
-        $creator = $day_plan->getCreatedBy();
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT day_plan_id FROM public.day_plan 
-            WHERE city_id = :city and 
-                  image = :image and 
-                  day_plan_name = :plan_name and
-                  created_by = :creator
-        ');
-        $stmt->bindParam(':city', $city, PDO::PARAM_INT);
-        $stmt->bindParam(':image', $image, PDO::PARAM_STR);
-        $stmt->bindParam(':plan_name', $plan_name, PDO::PARAM_STR);
-        $stmt->bindParam(':creator', $creator, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $data['day_plan_id'];
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC)['day_plan_id'];
     }
 
 

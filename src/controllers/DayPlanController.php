@@ -115,25 +115,25 @@ class DayPlanController extends AppController
     }
 
     public function addplan($steps) {
+
         if ($this->isPost()) {
+
+            $files_array = [];
+
             if(is_uploaded_file($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
-                move_uploaded_file(
-                    $_FILES['file']['tmp_name'],
-                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
-                );
+                foreach($_FILES['file']['tmp_name'] as $key => $tmp_name)
+                {
+                    $file_name = $key.$_FILES['file']['name'][$key];
+                    array_push($files_array, $file_name);
+                    move_uploaded_file( $_FILES['file']['tmp_name'], self::UPLOAD_DIRECTORY.$file_name);
+                }
             }
-//            if($this->validate($_FILES['files']) && $this->validate($_FILES['files']) ){
-//                move_uploaded_file(
-//                    $_FILES['files']['tmp_name'],
-//                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['files']['name']
-//                );
-//            }
 
             $post_city = $_POST['city'];
             $post_country = $_POST['country'];
 
             //TO DO: naprawić wyświetlanie $_FILES ->  nie wiem jak wiele zdjęć wyświetlać tam gdzie powinny
-            $post_image = $_FILES['file']['name'];
+            $post_image = $files_array[0];
             $post_day_plan_name = $_POST['day_plan_name'];
             $post_day_plan_description = $_POST['description'];
 
@@ -147,16 +147,14 @@ class DayPlanController extends AppController
             $day_plan->setDescription($post_day_plan_description);
 
             $post_milestone_location_name[0] = $_POST['milestone_location_name'];
-            $post_milestone_image[0] = $_POST['file']['name'];
+            $post_milestone_image[0] = $files_array[1];
             $post_milestone_street_name[0] = $_POST['milestone_street_name'];
             $post_milestone_street_number[0] = $_POST['milestone_street_number'];
             $post_milestone_description[0] = $_POST['milestone_description'];
             $post_milestone_start_time[0] = $_POST['milestone_start_time'];
             $post_milestone_end_time[0] = $_POST['milestone_end_time'];
 
-            $this->dayPlanRepository->addNewPlan($day_plan);
-
-            $plan_id = $this->dayPlanRepository->getPlanId($day_plan);
+            $plan_id = $this->dayPlanRepository->addNewPlan($day_plan);
 
             $mil1 = new Milestone($post_milestone_location_name[0]);
             $mil1->setStreetName($post_milestone_street_name[0]);
@@ -173,7 +171,7 @@ class DayPlanController extends AppController
                 for ($i = 1; $i < $steps; $i++) {
                     $wart = $i + 1;
                     $post_milestone_location_name[$i] = $_POST['milestone_location_name'.$wart];
-                    $post_milestone_image[$i] = $_POST['files']['name'];
+                    $post_milestone_image[$i] = $files_array[$wart];
                     $post_milestone_street_name[$i] = $_POST['milestone_street_name'.$wart];
                     $post_milestone_street_number[$i] = $_POST['milestone_street_number'.$wart];
                     $post_milestone_description[$i] = $_POST['milestone_description'.$wart];
