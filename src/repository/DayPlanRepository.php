@@ -174,5 +174,13 @@ class DayPlanRepository extends Repository
         return $stmt->fetch(PDO::FETCH_ASSOC)['day_plan_id'];
     }
 
+    public function setMap($id){
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.day_plan SET map = true WHERE day_plan_id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
 }
