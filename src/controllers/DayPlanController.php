@@ -143,13 +143,14 @@ class DayPlanController extends AppController
             $day_plan->setDayPlanName($post_day_plan_name);
             $day_plan->setDescription($post_day_plan_description);
 
-            $post_milestone_location_name[0] = $_POST['milestone_location_name'];
+            $post_milestone_location_name[0] = $_POST['milestone_location_name'][0];
             //$post_milestone_image[0] = $files_array[1];
-            $post_milestone_street_name[0] = $_POST['milestone_street_name'];
-            $post_milestone_street_number[0] = $_POST['milestone_street_number'];
-            $post_milestone_description[0] = $_POST['milestone_description'];
-            $post_milestone_start_time[0] = $_POST['milestone_start_time'];
-            $post_milestone_end_time[0] = $_POST['milestone_end_time'];
+            $post_milestone_street_name[0] = $_POST['milestone_street_name'][0];
+            $post_milestone_street_number[0] = $_POST['milestone_street_number'][0];
+            $post_milestone_description[0] = $_POST['milestone_description'][0];
+            $post_milestone_start_time[0] = $_POST['milestone_start_time'][0];
+            $post_milestone_end_time[0] = $_POST['milestone_end_time'][0];
+
 
             $plan_id = $this->dayPlanRepository->addNewPlan($day_plan);
 
@@ -173,13 +174,13 @@ class DayPlanController extends AppController
             if ($steps > 1) {
                 for ($i = 1; $i < $steps; $i++) {
                     $wart = $i + 1;
-                    $post_milestone_location_name[$i] = $_POST['milestone_location_name'];
+                    $post_milestone_location_name[$i] = $_POST['milestone_location_name'][$i];
                     //$post_milestone_image[$i] = $files_array[$wart];
-                    $post_milestone_street_name[$i] = $_POST['milestone_street_name'.$wart];
-                    $post_milestone_street_number[$i] = $_POST['milestone_street_number'.$wart];
-                    $post_milestone_description[$i] = $_POST['milestone_description'.$wart];
-                    $post_milestone_start_time[$i] = $_POST['milestone_start_time'.$wart];
-                    $post_milestone_end_time[$i] = $_POST['milestone_end_time'.$wart];
+                    $post_milestone_street_name[$i] = $_POST['milestone_street_name'][$i];
+                    $post_milestone_street_number[$i] = $_POST['milestone_street_number'][$i];
+                    $post_milestone_description[$i] = $_POST['milestone_description'][$i];
+                    $post_milestone_start_time[$i] = $_POST['milestone_start_time'][$i];
+                    $post_milestone_end_time[$i] = $_POST['milestone_end_time'][$i];
 
                     $mil = new Milestone($post_milestone_location_name[$i]);
                     $mil->setStreetName($post_milestone_street_name[$i]);

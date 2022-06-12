@@ -137,26 +137,26 @@
                             <div class="number-time">
                                 <p id="number-of-step">1</p>
                                 <p>Start time - End time</p>
-                                <p id="#time"><input name="milestone_start_time" required type="time"> - <input name="milestone_end_time" required type="time"></p>
+                                <p id="#time"><input name="milestone_start_time[]" required type="time"> - <input name="milestone_end_time[]" required type="time"></p>
                             </div>
                             <div class="step-description">
                                 <div class="milestone-input name">
                                     <p>Milestone name</p>
-                                    <input name="milestone_location_name" type="text">
+                                    <input name="milestone_location_name[]" type="text">
                                 </div>
                                 <div class="milestone-input street">
                                     <div class="street-info st">
                                         <p>Street</p>
-                                        <input name="milestone_street_name" type="text">
+                                        <input name="milestone_street_name[]" type="text">
                                     </div>
                                     <div class="street-info nb">
                                         <p>Number</p>
-                                        <input name="milestone_street_number"  type="text">
+                                        <input name="milestone_street_number[]"  type="text">
                                     </div>
                                 </div>
                                 <div class="milestone-input description">
                                     <p>Description</p>
-                                    <textarea name="milestone_description" placeholder="It was fun..."></textarea>
+                                    <textarea name="milestone_description[]" placeholder="It was fun..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -177,26 +177,26 @@
         <div class="number-time">
             <p id="number-of-step">1</p>
             <p>Start time - End time</p>
-            <p id="#time"><input name="milestone_start_time" type="time"> - <input name="milestone_end_time" type="time"></p>
+            <p id="#time"><input name="milestone_start_time[]" type="time"> - <input name="milestone_end_time[]" type="time"></p>
         </div>
         <div class="step-description">
             <div class="milestone-input name">
                 <p>Milestone name</p>
-                <input name="milestone_location_name" type="text">
+                <input name="milestone_location_name[]" type="text">
             </div>
             <div class="milestone-input street">
                 <div class="street-info st">
                     <p>Street</p>
-                    <input name="milestone_street_name" type="text">
+                    <input name="milestone_street_name[]" type="text">
                 </div>
                 <div class="street-info nb">
                     <p>Number</p>
-                    <input name="milestone_street_number"  type="number">
+                    <input name="milestone_street_number[]"  type="number">
                 </div>
             </div>
             <div class="milestone-input description">
                 <p>Description</p>
-                <textarea name="milestone_description" placeholder="It was fun..."></textarea>
+                <textarea name="milestone_description[]" placeholder="It was fun..."></textarea>
             </div>
         </div>
     </div>
