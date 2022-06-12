@@ -50,6 +50,10 @@ class MilestoneRepository extends Repository
     }
 
     private function getCooridinates($street,  $num, $city){
+
+        $street = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $street);
+        $city = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $city);
+
         $url = "https://api.opencagedata.com/geocode/v1/json?q=".$street."%20".$num."%2C%20".$city."&key=".MAP_API."&language=en&pretty=1&no_annotations=1";
 
         $geocode = file_get_contents($url);
