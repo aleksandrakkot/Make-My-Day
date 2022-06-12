@@ -173,7 +173,7 @@ class DayPlanController extends AppController
             if ($steps > 1) {
                 for ($i = 1; $i < $steps; $i++) {
                     $wart = $i + 1;
-                    $post_milestone_location_name[$i] = $_POST['milestone_location_name'.$wart];
+                    $post_milestone_location_name[$i] = $_POST['milestone_location_name'];
                     //$post_milestone_image[$i] = $files_array[$wart];
                     $post_milestone_street_name[$i] = $_POST['milestone_street_name'.$wart];
                     $post_milestone_street_number[$i] = $_POST['milestone_street_number'.$wart];
