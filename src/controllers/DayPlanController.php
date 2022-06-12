@@ -122,7 +122,6 @@ class DayPlanController extends AppController
 
             $files_array = [];
                 if (isset($_FILES['file'])) {
-                    var_dump($_FILES['file']['name']);
                     $file_name = $_FILES['file']['name'];
                     array_push($files_array, $file_name);
                     $file_tmp =$_FILES['file']['tmp_name'];
@@ -146,7 +145,7 @@ class DayPlanController extends AppController
             $day_plan->setDescription($post_day_plan_description);
 
             $post_milestone_location_name[0] = $_POST['milestone_location_name'];
-            $post_milestone_image[0] = $files_array[1];
+            //$post_milestone_image[0] = $files_array[1];
             $post_milestone_street_name[0] = $_POST['milestone_street_name'];
             $post_milestone_street_number[0] = $_POST['milestone_street_number'];
             $post_milestone_description[0] = $_POST['milestone_description'];
@@ -157,7 +156,7 @@ class DayPlanController extends AppController
 
             $mil1 = new Milestone($post_milestone_location_name[0]);
             $mil1->setStreetName($post_milestone_street_name[0]);
-            $mil1->setImage($post_milestone_image[0]);
+            //$mil1->setImage($post_milestone_image[0]);
             $mil1->setStreetNumber($post_milestone_street_number[0]);
             $mil1->setMilestoneDescription($post_milestone_description[0]);
             $mil1->setMilestoneStartTime($post_milestone_start_time[0]);
@@ -170,7 +169,7 @@ class DayPlanController extends AppController
                 for ($i = 1; $i < $steps; $i++) {
                     $wart = $i + 1;
                     $post_milestone_location_name[$i] = $_POST['milestone_location_name'.$wart];
-                    $post_milestone_image[$i] = $files_array[$wart];
+                    //$post_milestone_image[$i] = $files_array[$wart];
                     $post_milestone_street_name[$i] = $_POST['milestone_street_name'.$wart];
                     $post_milestone_street_number[$i] = $_POST['milestone_street_number'.$wart];
                     $post_milestone_description[$i] = $_POST['milestone_description'.$wart];
@@ -179,7 +178,7 @@ class DayPlanController extends AppController
 
                     $mil = new Milestone($post_milestone_location_name[$i]);
                     $mil->setStreetName($post_milestone_street_name[$i]);
-                    $mil->setImage($post_milestone_image[$i]);
+                    //$mil->setImage($post_milestone_image[$i]);
                     $mil->setStreetNumber($post_milestone_street_number[$i]);
                     $mil->setMilestoneDescription($post_milestone_description[$i]);
                     $mil->setMilestoneStartTime($post_milestone_start_time[$i]);
