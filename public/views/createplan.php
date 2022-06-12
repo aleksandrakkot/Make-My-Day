@@ -147,11 +147,11 @@
                                 <div class="milestone-input street">
                                     <div class="street-info st">
                                         <p>Street</p>
-                                        <input name="$milestone_street_name" type="text">
+                                        <input name="milestone_street_name" type="text">
                                     </div>
                                     <div class="street-info nb">
                                         <p>Number</p>
-                                        <input name="$milestone_street_number"  type="number">
+                                        <input name="milestone_street_number"  type="number">
                                     </div>
                                 </div>
                                 <div class="milestone-input description">
@@ -187,11 +187,11 @@
             <div class="milestone-input street">
                 <div class="street-info st">
                     <p>Street</p>
-                    <input name="$milestone_street_name" type="text">
+                    <input name="milestone_street_name" type="text">
                 </div>
                 <div class="street-info nb">
                     <p>Number</p>
-                    <input name="$milestone_street_number"  type="number">
+                    <input name="milestone_street_number"  type="number">
                 </div>
             </div>
             <div class="milestone-input description">
