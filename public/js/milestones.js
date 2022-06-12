@@ -55,7 +55,7 @@ const createMilestone = (milestone, num) => {
     const image = clone.querySelector("#step-photo");
 
     if(milestone.image !== null){
-        image.src = `public/uploads/${p.image}`;
+        image.src = `public/uploads/${milestone.image}`;
     }else {
         image.parentElement.removeChild(image);
     }

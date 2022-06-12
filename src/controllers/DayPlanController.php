@@ -116,16 +116,21 @@ class DayPlanController extends AppController
 
     public function addplan($steps) {
 
+
         if ($this->isPost()) {
+
 
             $files_array = [];
 
-            if(is_uploaded_file($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+            if(isset($_FILES['file'])) {
+
                 foreach($_FILES['file']['tmp_name'] as $key => $tmp_name)
                 {
-                    $file_name = $key.$_FILES['file']['name'][$key];
+                    var_dump($_FILES['file']['name']);
+                    $file_name = $_FILES['file']['name'][$key];
                     array_push($files_array, $file_name);
-                    move_uploaded_file( $_FILES['file']['tmp_name'], self::UPLOAD_DIRECTORY.$file_name);
+                    $file_tmp =$_FILES['file']['tmp_name'][$key];
+                    move_uploaded_file( $file_tmp,  dirname(__DIR__).self::UPLOAD_DIRECTORY.$file_name);
                 }
             }
 
