@@ -18,6 +18,7 @@ Router::post('registration', 'DefaultController');
 
 Router::get('rankings', 'DayPlanController');
 Router::get('dayplan', 'DayPlanController');
+Router::get('places', 'DayPlanController');
 
 Router::get('milestone', 'MilestoneController');
 
