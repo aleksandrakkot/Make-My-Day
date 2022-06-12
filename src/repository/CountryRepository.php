@@ -52,6 +52,8 @@ class CountryRepository extends Repository
         ');
         $stmt->bindParam(':cityId', $id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt;
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data['city_name'];
     }
 }

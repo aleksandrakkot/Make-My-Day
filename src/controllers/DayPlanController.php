@@ -152,7 +152,6 @@ class DayPlanController extends AppController
             $post_milestone_start_time[0] = $_POST['milestone_start_time'];
             $post_milestone_end_time[0] = $_POST['milestone_end_time'];
 
-
             $plan_id = $this->dayPlanRepository->addNewPlan($day_plan);
 
             $mil1 = new Milestone($post_milestone_location_name[0]);
@@ -164,7 +163,13 @@ class DayPlanController extends AppController
             $mil1->setMilestoneEndTime($post_milestone_end_time[0]);
             $mil1->setDayPlanId($plan_id);
 
-            $this->milestoneRepository->addMilestone($mil1, $this->countryRepository->getCityName($post_city));
+            $map = false;
+
+            $city_name_mil = $this->countryRepository->getCityName($post_city);
+
+            $map = $this->milestoneRepository->addMilestone($mil1, $city_name_mil);
+
+            if($map == true) $this->dayPlanRepository->setMap($plan_id);
 
             if ($steps > 1) {
                 for ($i = 1; $i < $steps; $i++) {
@@ -186,7 +191,8 @@ class DayPlanController extends AppController
                     $mil->setMilestoneEndTime($post_milestone_end_time[$i]);
                     $mil->setDayPlanId($plan_id);
 
-                    $this->milestoneRepository->addMilestone($mil, $this->countryRepository->getCityName($post_city));
+                    $this->milestoneRepository->addMilestone($mil, $city_name_mil);
+                    if($map == true) $this->dayPlanRepository->setMap($plan_id);
                 }
             }
             $url = "http://$_SERVER[HTTP_HOST]";

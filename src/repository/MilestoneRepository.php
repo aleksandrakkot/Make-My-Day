@@ -21,10 +21,17 @@ class MilestoneRepository extends Repository
     public function addMilestone(Milestone $mil, $city_name)
     {
 
-        //$coordinates = $this->getCooridinates($mil->getStreetName(), $mil->getStreetNumber(), $city_name);
+        $coordinates = $this->getCooridinates($mil->getStreetName(), $mil->getStreetNumber(), $city_name);
+        $map = false;
+        if($coordinates['lat']) {
+            $map = true;
+            $coordinates = "[".$coordinates['lng'].", ".$coordinates['lat']."]";
+        } else{
+            $coordinates = null;
+        }
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public.milestone (day_plan_id, milestone_type_id, location_name, street_name, street_number, milestone_start_time,milestone_end_time, milestone_description, image)
-            VALUES (?, 0, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO public.milestone (day_plan_id, milestone_type_id, location_name, street_name, street_number, milestone_start_time,milestone_end_time, milestone_description, image, coordinates)
+            VALUES (?, 0, ?, ?, ?, ?, ?, ?, ?,?)
         ');
 
         $stmt->execute([
@@ -35,8 +42,11 @@ class MilestoneRepository extends Repository
             $mil->getMilestoneStartTime(),
             $mil->getMilestoneEndTime(),
             $mil->getMilestoneDescription(),
-            $mil->getImage()
+            $mil->getImage(),
+            $coordinates
         ]);
+
+        return $map;
     }
 
     private function getCooridinates($street,  $num, $city){
@@ -45,6 +55,8 @@ class MilestoneRepository extends Repository
         $geocode = file_get_contents($url);
 
         $json = json_decode($geocode);
+
+        if(!$json->results[0]->components->road) return false;
 
         $data['lat'] = $json->results[0]->geometry->lat;
         $data['lng'] = $json->results[0]->geometry->lng;
