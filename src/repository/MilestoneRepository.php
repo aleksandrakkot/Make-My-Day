@@ -48,7 +48,7 @@ class MilestoneRepository extends Repository
 
         return $map;
     }
-
+    
     private function getCooridinates($street,  $num, $city){
 
         $street = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $street);
@@ -66,4 +66,15 @@ class MilestoneRepository extends Repository
         $data['lng'] = $json->results[0]->geometry->lng;
         return $data;
 }
+
+    public function getPlacesByPlanId($planid)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.milestone
+            WHERE plan_id = :planid
+        ');
+        $stmt->bindParam(':planid', $planid, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

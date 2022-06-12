@@ -94,6 +94,9 @@ class DayPlanController extends AppController
                     $this->render('dayplan', ['plan' => $plan]);
                 }
                 break;
+            default :
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/rankings");
         }
     }
 
@@ -115,11 +118,7 @@ class DayPlanController extends AppController
     }
 
     public function addplan($steps) {
-
-
         if ($this->isPost()) {
-
-
             $files_array = [];
                 if (isset($_FILES['file'])) {
                     $file_name = $_FILES['file']['name'];
@@ -200,6 +199,13 @@ class DayPlanController extends AppController
         }
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/yourplans");
+    }
+
+    public function places($planid)
+    {
+        header('Content-type: application/json');
+        http_response_code(200);
+        echo json_encode($this->milestoneRepository->getPlacesByPlanId($planid));
     }
 
     private function validate(array $file): bool

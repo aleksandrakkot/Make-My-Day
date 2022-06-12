@@ -4,7 +4,11 @@
     <title>Day plan | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
+    <link rel="stylesheet" href="/public/css/map.css">
     <script src = "/public/js/milestones.js" type="text/javascript" defer></script>
+    <script src = "/public/js/map.js" type="text/javascript" defer></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -124,6 +128,7 @@
             <?php if ($plan->getMap()): ?>
             <div class="map">
                 <h2>Map</h2>
+                <div id="map">available</div>
             </div>
             <?php endif?>
             <div class="comments">
