@@ -45,4 +45,13 @@ class CountryRepository extends Repository
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data['city_id'];
     }
+
+    public function getCityName($id){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.city WHERE city_id = :cityId;
+        ');
+        $stmt->bindParam(':cityId', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt;
+    }
 }
