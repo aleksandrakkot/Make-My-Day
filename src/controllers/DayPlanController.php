@@ -215,6 +215,26 @@ class DayPlanController extends AppController
         }
     }
 
+    public function deletePlan($id)
+    {
+        $this->dayPlanRepository->deleteDayPlan($id);
+
+        http_response_code(200);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/yourplans");
+    }
+
+    public function publishPlan($id)
+    {
+        $this->dayPlanRepository->publishDayPlan($id);
+
+        http_response_code(200);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/rankings");
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

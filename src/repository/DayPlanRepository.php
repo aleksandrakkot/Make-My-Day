@@ -182,5 +182,25 @@ class DayPlanRepository extends Repository
         $stmt->execute();
     }
 
+    public function deleteDayPlan($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM public.day_plan 
+            WHERE day_plan_id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function publishDayPlan($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.day_plan SET state_flag = 2
+            WHERE day_plan_id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
 }
