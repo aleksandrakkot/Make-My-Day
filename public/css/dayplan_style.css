@@ -33,7 +33,9 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0em 0em 4em 0em;
+    margin: 0em 0em 4em 3em;
+    gap: 7em;
+    justify-content: start;
 }
 
 .number-time {
