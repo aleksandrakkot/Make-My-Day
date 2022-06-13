@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/public/css/dayplan_style.css">
     <link rel="stylesheet" href="/public/css/add_plan_style.css">
     <script src = "/public/js/createplan.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="/public/js/admin.js" defer></script>
 </head>
 
 <body>
@@ -52,6 +53,16 @@
                             <path d="M28.2195 28L20.3677 20.2115" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span class="preview">search</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="menu-icons">
+                    <a class="nonactive" href="/admin" id="moderate-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8H30V10H16V8ZM6 10.59L3.41 8L2 9.41L6 13.41L14 5.41L12.59 4L6 10.59ZM16 22H30V24H16V22ZM6 24.59L3.41 22L2 23.41L6 27.41L14 19.41L12.59 18L6 24.59Z" stroke="#000001" stroke-width="1" fill="white"/>
+                        </svg>
+                        <span class="preview">unconfirmed plans</span>
                     </a>
                 </div>
             </li>

@@ -61,6 +61,7 @@
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16 8H30V10H16V8ZM6 10.59L3.41 8L2 9.41L6 13.41L14 5.41L12.59 4L6 10.59ZM16 22H30V24H16V22ZM6 24.59L3.41 22L2 23.41L6 27.41L14 19.41L12.59 18L6 24.59Z" stroke="#F68802" stroke-width="2" fill="white"/>
                         </svg>
+                        <span class="preview">unconfirmed plans</span>
                     </a>
                 </div>
             </li>
@@ -106,7 +107,7 @@
         </header>
         <div class="top10">
             <div id="choose-top10">
-                <a id="private-plans" class="your-plans-buttons active">ACCEPT PLANS</a>
+                <a id="private-plans" class="your-plans-buttons active">PLANS TO ACCEPT</a>
             </div>
             <div class="all-your-plans your-plan-result-divs active">
                 <?php foreach ($plans_to_commit as $key): ?>
