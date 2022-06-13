@@ -216,24 +216,20 @@ class DayPlanController extends AppController
         }
     }
 
-    public function deletePlan($id)
+    public function handlePlan()
     {
-        $this->dayPlanRepository->deleteDayPlan($id);
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
 
-        http_response_code(200);
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/yourplans");
-    }
-
-    public function publishPlan($id)
-    {
-        $this->dayPlanRepository->publishDayPlan($id);
-
-        http_response_code(200);
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/rankings");
+            header('Content-type: application/json');
+            http_response_code(200);
+            $id=$decoded['id'];
+            $state=$decoded['state_flag'];
+            $this->dayPlanRepository->handleDayPlan($id,$state);
+            echo json_encode('success');
+        }
     }
 
     public function favourites()

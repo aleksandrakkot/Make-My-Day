@@ -5,7 +5,8 @@ require_once __DIR__ . '/../models/DayPlan.php';
 
 class DayPlanRepository extends Repository
 {
-    public function getTopCountry(int $country_id){
+    public function getTopCountry(int $country_id)
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
             JOIN public.city c on dp.city_id = c.city_id
@@ -19,9 +20,10 @@ class DayPlanRepository extends Repository
         $stmt->bindParam(':countryid', $country_id, PDO::PARAM_INT);
 
         return $this->getTop($stmt);
-}
+    }
 
-    public function getTopWorld(){
+    public function getTopWorld()
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
             JOIN public.city c on dp.city_id = c.city_id
@@ -34,7 +36,8 @@ class DayPlanRepository extends Repository
         return $this->getTop($stmt);
     }
 
-    public function getTop($stmt){
+    public function getTop($stmt)
+    {
         $stmt->execute();
 
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +45,7 @@ class DayPlanRepository extends Repository
         $result = [];
         $i = 0;
 
-        foreach ($plans as $plan){
+        foreach ($plans as $plan) {
             $result[$i] = new DayPlan($plan['city_name']);
             $result[$i]->setDayPlanId($plan['day_plan_id']);
             $result[$i]->setCountry($plan['country_name']);
@@ -54,7 +57,7 @@ class DayPlanRepository extends Repository
         }
 
         return $result;
-}
+    }
 
 
     public function getPlansByCity($search)
@@ -71,7 +74,8 @@ class DayPlanRepository extends Repository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getPlanById($id){
+    public function getPlanById($id)
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
             JOIN public.city c on dp.city_id = c.city_id
@@ -84,7 +88,7 @@ class DayPlanRepository extends Repository
         $stmt->execute();
 
         $plan = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
         $day_plan_obj = new DayPlan($plan['city_name']);
         $day_plan_obj->setCountry($plan['country_name']);
         $day_plan_obj->setDayPlanName($plan['day_plan_name']);
@@ -95,7 +99,7 @@ class DayPlanRepository extends Repository
         $day_plan_obj->setMap($plan['map']);
         $day_plan_obj->setCreatedById($plan['created_by']);
         $day_plan_obj->setDescription($plan['description']);
-        
+
         return $day_plan_obj;
     }
 
@@ -170,11 +174,12 @@ class DayPlanRepository extends Repository
             $day_plan->getDescription(),
             $day_plan->getCreatedBy()
         ]);
-        
+
         return $stmt->fetch(PDO::FETCH_ASSOC)['day_plan_id'];
     }
 
-    public function setMap($id){
+    public function setMap($id)
+    {
         $stmt = $this->database->connect()->prepare('
             UPDATE public.day_plan SET map = true WHERE day_plan_id = :id
         ');
@@ -182,27 +187,8 @@ class DayPlanRepository extends Repository
         $stmt->execute();
     }
 
-    public function deleteDayPlan($id)
-    {
-        $stmt = $this->database->connect()->prepare('
-            DELETE FROM public.day_plan 
-            WHERE day_plan_id = :id
-        ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-    }
 
-    public function publishDayPlan($id)
-    {
-        $stmt = $this->database->connect()->prepare('
-            UPDATE public.day_plan SET state_flag = 2
-            WHERE day_plan_id = :id
-        ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-    }
-
-    public function getFavouritePlans(int $userid):array
+    public function getFavouritePlans(int $userid): array
     {
         $result = [];
         $stmt = $this->database->connect()->prepare('
@@ -231,7 +217,8 @@ class DayPlanRepository extends Repository
         return $result;
     }
 
-    public function getPlanToCommit(){
+    public function getPlanToCommit()
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
             JOIN public.city c on dp.city_id = c.city_id
@@ -257,4 +244,22 @@ class DayPlanRepository extends Repository
         return $result;
     }
 
+    public function handleDayPlan($id, $state_flag)
+    {
+        $stmt=0;
+        if ($state_flag == -1) {
+            $stmt = $this->database->connect()->prepare('
+                    DELETE FROM public.day_plan 
+                    WHERE day_plan_id = :id
+                ');
+        } else {
+            $stmt = $this->database->connect()->prepare('
+                    UPDATE public.day_plan SET state_flag = :state_flag WHERE day_plan_id = :id
+                ');
+        }
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':state_flag', $state_flag, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }
