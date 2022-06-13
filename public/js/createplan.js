@@ -6,14 +6,12 @@ const formPlan = document.querySelector(".create_plan_form")
 let counter = 1
 
 function showNewFormMilestone() {
-    console.log("jestem w showNewFormMilestone")
+    counter++;
 
     const clone = template_milestone.content.cloneNode(true)
+    clone.querySelector("#number-of-step").textContent = counter;
     stepsFormContainer.appendChild(clone)
 
-    counter ++
-
-    console.log(counter)
     formPlan.setAttribute("action","addplan/"+counter);
 }
 

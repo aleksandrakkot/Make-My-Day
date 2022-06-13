@@ -43,25 +43,25 @@ p {
     align-items: center;
 }
 
-.step-info:nth-child(n + 2) #number-of-step {
+.step-info:nth-child(1n + 2) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--yellow-color);
 }
 
-.step-info:nth-child(n + 3) #number-of-step {
+.step-info:nth-child(2n + 3) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--orange-color);
 }
 
-.step-info:nth-child(n + 4) #number-of-step {
+.step-info:nth-child(3n + 4) #number-of-step {
     margin: 0em 0.3em;
     font-size: 120px;
     color: #8E7935;
 }
 
-.step-info:nth-child(n + 5) #number-of-step{
+.step-info:nth-child(4n + 5) #number-of-step{
     margin: 0em 0.3em;
     font-size: 120px;
     color: var(--lightgreen-color);;

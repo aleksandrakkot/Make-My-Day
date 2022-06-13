@@ -177,7 +177,7 @@
         <div class="number-time">
             <p id="number-of-step">1</p>
             <p>Start time - End time</p>
-            <p id="#time"><input name="milestone_start_time[]" type="time"> - <input name="milestone_end_time[]" type="time"></p>
+            <p id="#time"><input name="milestone_start_time[]" type="time" required> - <input name="milestone_end_time[]" type="time" required></p>
         </div>
         <div class="step-description">
             <div class="milestone-input name">
