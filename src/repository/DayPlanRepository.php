@@ -63,7 +63,7 @@ class DayPlanRepository extends Repository
             SELECT * FROM public.day_plan d
                 left join public.user u on u.user_id = d.created_by
                 left join public.city c on c.city_id = d.city_id
-            where c.city_name like :search
+            where c.city_name like :search and d.state_flag = 1
         ');
         $stmt->bindParam(':search', $search, PDO::PARAM_STR);
         $stmt->execute();
