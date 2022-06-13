@@ -126,6 +126,10 @@
                                         <path d="M12.0069 23L2.67077 12.8666C-2.40323 6.78653 5.05554 -4.88717 12.0069 4.55718C18.9583 -4.88717 26.3832 6.82706 21.3431 12.8666L12.0069 23Z" stroke="#000001" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
+                                <div class="private-plan-action-buttons" id="<?= $key->getDayPlanId() ?>">
+                                    <button class="plan-action-buttons" id="delete_btn">Delete</button>
+                                    <button class="plan-action-buttons" id="publish_btn">Publish</button>
+                                </div>
                             </div>
                         </div>
                     </a>
