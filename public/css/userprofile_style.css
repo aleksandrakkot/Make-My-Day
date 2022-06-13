@@ -74,4 +74,5 @@ input {
 .messsage{
     margin-top: 20px;
     text-align: center;
+    font-family: var(--main-font);
 }
