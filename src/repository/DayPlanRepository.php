@@ -90,7 +90,7 @@ class DayPlanRepository extends Repository
 
         $time = $this->getStartEndTime($id);
         $day_plan_obj->setStartTime($time['start']);
-        $day_plan_obj->setEndTime($time['end']);
+        $day_plan_obj->setEndTime($time['fin']);
 
         return $day_plan_obj;
     }
