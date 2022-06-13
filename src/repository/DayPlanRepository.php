@@ -74,6 +74,7 @@ class DayPlanRepository extends Repository
 
     public function getPlanById($id)
     {
+        $userid = $this->userRepository->getUserId($this->user_array['email']);
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
             JOIN public.city c on dp.city_id = c.city_id
@@ -97,7 +98,8 @@ class DayPlanRepository extends Repository
         $day_plan_obj->setMap($plan['map']);
         $day_plan_obj->setCreatedById($plan['created_by']);
         $day_plan_obj->setDescription($plan['description']);
-
+        $ifFav = $this->ifPlanIsFavourite($plan['day_plan_id'],$userid);
+        $day_plan_obj->setIsFav($ifFav);
         $time = $this->getStartEndTime($id);
         $day_plan_obj->setStartTime($time['start']);
         $day_plan_obj->setEndTime($time['fin']);

@@ -74,15 +74,27 @@ function changeStats(e,what) {
     let parent = e.parentElement.parentElement.parentElement.parentElement
     let svg
     let number_h4
+    let dayPlan
+
     if(what === 'svg'){
         parent=parent.parentElement
         number_h4=e.parentElement.previousElementSibling
         svg = e.parentElement
+        dayPlan = e.parentElement.parentElement.getAttribute("id")
     }else{
         number_h4=e
+        dayPlan = e.parentElement.getAttribute("id")
         svg = e.nextElementSibling
     }
-    const id = (parent.getAttribute("href")).split('/').at(-1)
+
+    console.log(dayPlan)
+    let id
+    if(dayPlan === 'heartInDayPlan'){
+        id = window.location.href.split('/').at(-1)
+    }else{
+        id = (parent.getAttribute("href")).split('/').at(-1)
+    }
+
 
     if (svg.classList.contains("favourited")){
         const data = {
