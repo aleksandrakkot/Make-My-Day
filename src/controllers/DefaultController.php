@@ -14,4 +14,9 @@ class DefaultController extends AppController {
     {
         $this->render('createplan');
     }
+
+    public function admin()
+    {
+        $this->render('admin');
+    }
 }
