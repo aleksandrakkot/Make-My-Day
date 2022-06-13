@@ -8,7 +8,8 @@ function ifAdmin() {
         console.log('Jestes adminem!')
         console.log(moderateIcon)
         moderateIcon.style.display = "flex";
-    } else if(adm === 0) {
+    } else {
+        console.log('Nie jestes adminem!')
         moderateIcon.style.display = "none";
     }
 }
