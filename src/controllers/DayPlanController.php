@@ -266,6 +266,8 @@ class DayPlanController extends AppController
         return $result;
     }
 
-
-
+    public function admin() {
+        $plans_to_commit = $this->dayPlanRepository->getPlanToCommit();
+        $this->render('admin', ['plans_to_commit'=>$plans_to_commit]);
+    }
 }
