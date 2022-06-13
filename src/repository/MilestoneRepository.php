@@ -52,13 +52,13 @@ class MilestoneRepository extends Repository
     private function getCooridinates($street,  $num, $city){
 
         $url = "https://api.opencagedata.com/geocode/v1/json?q=".$street."%20".$num."%2C%20".$city."&key=".MAP_API."&language=en&pretty=1&no_annotations=1";
-        var_dump($url);
+
 
         $encodedUrl = urlencode($url);
-        var_dump($encodedUrl);
+
 
         $fixedEncodedUrl = str_replace(['%2F', '%3A', '%3F', '%3D', '%2520', '%252C', '%26','+'], ['/', ':', '?', '=', '%20', '%2C%20', '&','%20'], $encodedUrl);
-        var_dump($fixedEncodedUrl);
+
         $json = json_decode(file_get_contents($fixedEncodedUrl));
 
         if(!$json->results[0]->components->road) return false;
