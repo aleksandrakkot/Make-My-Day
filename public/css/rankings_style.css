@@ -318,3 +318,7 @@ li {
     background-color: var(--orange-color);
 }
 
+.favourited {
+    fill: var(--orange-color);
+}
+

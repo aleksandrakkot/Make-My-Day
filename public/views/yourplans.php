@@ -4,6 +4,7 @@
     <title>Your plans | MakeMyDay</title>
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <script type="text/javascript" src="/public/js/yourplans.js" defer></script>
+    <script type="text/javascript" src="/public/js/states.js" defer></script>
 </head>
 
 <body>
