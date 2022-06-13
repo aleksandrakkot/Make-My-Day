@@ -235,6 +235,13 @@ class DayPlanController extends AppController
         header("Location: {$url}/rankings");
     }
 
+    public function favourites()
+    {
+        $id = $this->userRepository->getUserId($this->user_array['email']);
+        $fav_plans = $this->dayPlanRepository->getFavouritePlans($id);
+        $this->render('favourites', ['fav_plans' => $fav_plans]);
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

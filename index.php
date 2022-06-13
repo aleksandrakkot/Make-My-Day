@@ -24,7 +24,8 @@ Router::post('publishPlan', 'DayPlanController');
 
 Router::get('milestone', 'MilestoneController');
 
-Router::get('favourites', 'DefaultController');
+Router::get('favourites', 'DayPlanController');
+
 Router::get('search', 'DefaultController');
 Router::post('searchPlans', 'DayPlanController');
 Router::get('createplan', 'DayPlanController');
