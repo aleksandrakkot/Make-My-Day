@@ -75,16 +75,4 @@ class MilestoneRepository extends Repository
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function getStartEndTime($plan_id){
-        $stmt = $this->database->connect()->prepare('
-            SELECT min(milestone_start_time) start, max(milestone_end_time) end FROM public.milestone
-            WHERE plan_id = :planid
-        ');
-
-        $stmt->bindParam(':planid', $plan_id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $time = $stmt->fetch(PDO::FETCH_ASSOC);
-    }
 }

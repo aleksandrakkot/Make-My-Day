@@ -42,26 +42,13 @@ class DayPlanRepository extends Repository
 
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $result = [];
-        $i = 0;
-
-        foreach ($plans as $plan) {
-            $result[$i] = new DayPlan($plan['city_name']);
-            $result[$i]->setDayPlanId($plan['day_plan_id']);
-            $result[$i]->setCountry($plan['country_name']);
-            $result[$i]->setDayPlanName($plan['day_plan_name']);
-            $result[$i]->setLikes($plan['likes']);
-            $result[$i]->setCreatedBy($plan['nick']);
-            $result[$i]->setImage($plan['image']);
-            $i += 1;
-        }
-
-        return $result;
+        return $this->createPlanModel($plans);
     }
 
 
     public function getPlansByCity($search)
     {
+
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan d
                 left join public.user u on u.user_id = d.created_by
@@ -71,7 +58,8 @@ class DayPlanRepository extends Repository
         $stmt->bindParam(':search', $search, PDO::PARAM_STR);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->createPlanModel($plans);
     }
 
     public function getPlanById($id)
@@ -100,12 +88,15 @@ class DayPlanRepository extends Repository
         $day_plan_obj->setCreatedById($plan['created_by']);
         $day_plan_obj->setDescription($plan['description']);
 
+        $time = $this->getStartEndTime($id);
+        $day_plan_obj->setStartTime($time['start']);
+        $day_plan_obj->setEndTime($time['end']);
+
         return $day_plan_obj;
     }
 
     public function getUserPlans(int $userid): array
     {
-        $result = [];
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
                 JOIN public.city c on dp.city_id = c.city_id
@@ -117,23 +108,11 @@ class DayPlanRepository extends Repository
         $stmt->execute();
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $i = 0;
-        foreach ($plans as $plan) {
-            $result[$i] = new DayPlan($plan['city_name']);
-            $result[$i]->setDayPlanId($plan['day_plan_id']);
-            $result[$i]->setCountry($plan['country_name']);
-            $result[$i]->setDayPlanName($plan['day_plan_name']);
-            $result[$i]->setLikes($plan['likes']);
-            $result[$i]->setCreatedBy($plan['nick']);
-            $result[$i]->setImage($plan['image']);
-            $i += 1;
-        }
-        return $result;
+        return $this->createPlanModel($plans);
     }
 
     public function getPublicPrivateUserPlans(int $userid, int $flag): array
     {
-        $result = [];
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
                 JOIN public.city c on dp.city_id = c.city_id
@@ -146,18 +125,7 @@ class DayPlanRepository extends Repository
         $stmt->execute();
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $i = 0;
-        foreach ($plans as $plan) {
-            $result[$i] = new DayPlan($plan['city_name']);
-            $result[$i]->setDayPlanId($plan['day_plan_id']);
-            $result[$i]->setCountry($plan['country_name']);
-            $result[$i]->setDayPlanName($plan['day_plan_name']);
-            $result[$i]->setLikes($plan['likes']);
-            $result[$i]->setCreatedBy($plan['nick']);
-            $result[$i]->setImage($plan['image']);
-            $i += 1;
-        }
-        return $result;
+        return $this->createPlanModel($plans);
     }
 
     public function addNewPlan(DayPlan $day_plan)
@@ -190,7 +158,6 @@ class DayPlanRepository extends Repository
 
     public function getFavouritePlans(int $userid): array
     {
-        $result = [];
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.day_plan dp
                 JOIN public.city c on dp.city_id = c.city_id
@@ -203,18 +170,7 @@ class DayPlanRepository extends Repository
         $stmt->execute();
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $i = 0;
-        foreach ($plans as $plan) {
-            $result[$i] = new DayPlan($plan['city_name']);
-            $result[$i]->setDayPlanId($plan['day_plan_id']);
-            $result[$i]->setCountry($plan['country_name']);
-            $result[$i]->setDayPlanName($plan['day_plan_name']);
-            $result[$i]->setLikes($plan['likes']);
-            $result[$i]->setCreatedBy($plan['nick']);
-            $result[$i]->setImage($plan['image']);
-            $i += 1;
-        }
-        return $result;
+        return $this->createPlanModel($plans);
     }
 
     public function getPlanToCommit()
@@ -230,18 +186,7 @@ class DayPlanRepository extends Repository
         $stmt->execute();
         $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $i = 0;
-        foreach ($plans as $plan) {
-            $result[$i] = new DayPlan($plan['city_name']);
-            $result[$i]->setDayPlanId($plan['day_plan_id']);
-            $result[$i]->setCountry($plan['country_name']);
-            $result[$i]->setDayPlanName($plan['day_plan_name']);
-            $result[$i]->setLikes($plan['likes']);
-            $result[$i]->setCreatedBy($plan['nick']);
-            $result[$i]->setImage($plan['image']);
-            $i += 1;
-        }
-        return $result;
+        return $this->createPlanModel($plans);
     }
 
     public function handleDayPlan($id, $state_flag)
@@ -261,5 +206,41 @@ class DayPlanRepository extends Repository
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':state_flag', $state_flag, PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+    private function createPlanModel($plans){
+        $result = [];
+        $i = 0;
+
+        foreach ($plans as $plan) {
+            $result[$i] = new DayPlan($plan['city_name']);
+            $result[$i]->setDayPlanId($plan['day_plan_id']);
+            $result[$i]->setCountry($plan['country_name']);
+            $result[$i]->setDayPlanName($plan['day_plan_name']);
+            $result[$i]->setLikes($plan['likes']);
+            $result[$i]->setCreatedBy($plan['nick']);
+            $result[$i]->setImage($plan['image']);
+            $time = $this->getStartEndTime($plan['day_plan_id']);
+            $result[$i]->setStartTime($time['start']);
+            $result[$i]->setEndTime($time['fin']);
+            $i += 1;
+        }
+
+        return $result;
+    }
+
+    private function getStartEndTime($plan_id){
+        $stmt = $this->database->connect()->prepare('
+            SELECT min(milestone_start_time) start, max(milestone_end_time) fin FROM public.milestone
+            WHERE day_plan_id = :planid
+        ');
+
+        $stmt->bindParam(':planid', $plan_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+
+        $time = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $time;
     }
 }

@@ -118,7 +118,7 @@
                 <div class="plan-info">
                     <h1><?= $plan->getDayPlanName()?></h1>
                     <h3><?= $plan->getCity() ?>, <?= $plan->getCountry()?></h3>
-                    <h3>9am - 12 pm</h3>
+                    <h3><?= $plan->getStartTime() ?> - <?= $plan->getEndTime() ?></h3>
                     <h4><?= $plan->getCreatedBy() ?></h4>
                     <div class="likes">
                         <h4><?= $plan->getLikes() ?></h4>

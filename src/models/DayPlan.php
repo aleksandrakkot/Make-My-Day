@@ -13,6 +13,28 @@ class DayPlan
     private $created_by;
     private $created_by_id;
     private $state_flag;
+    private $start_time;
+
+    public function getStartTime()
+    {
+        return $this->start_time;
+    }
+
+    public function setStartTime($start_time): void
+    {
+        $this->start_time = $start_time;
+    }
+
+    public function getEndTime()
+    {
+        return $this->end_time;
+    }
+
+    public function setEndTime($end_time): void
+    {
+        $this->end_time = $end_time;
+    }
+    private $end_time;
 
     public function __construct($city, $likes = 0, $day_plan_id = null)
     {

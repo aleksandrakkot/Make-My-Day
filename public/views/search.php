@@ -128,7 +128,7 @@
             <div class="plan-info">
                 <h1 id="plans-name"></h1>
                 <h3 id="plans-location"></h3>
-                <h3 id="plans-time">8am - 15pm</h3>
+                <h3 id="plans-time"></h3>
                 <h4 id="plans-user"></h4>
                 <div class="likes">
                     <h4 id="plans-likes"></h4>

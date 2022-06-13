@@ -70,6 +70,9 @@ function createPlan(p){
     const likes = clone.querySelector("#plans-likes");
     likes.innerHTML = p.likes;
 
+    const time = clone.querySelector("#plans-time");
+    time.innerHTML = p.likes;
+
     planContainer.appendChild(clone);
     preventLoadOnFavourite();
 }

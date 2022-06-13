@@ -120,7 +120,7 @@
                             <div class="plan-info">
                                 <h1><?= $key->getDayPlanName()?></h1>
                                 <h3><?= $key->getCity() ?>, <?= $key->getCountry()?></h3>
-                                <h3>9am - 12 pm</h3>
+                                <h3><?= $key->getStartTime() ?> - <?= $key->getEndTime() ?></h3>
                                 <h4><?= $key->getCreatedBy() ?></h4>
                                 <div class="likes" id="0">
                                     <h4><?= $key->getLikes() ?></h4>
@@ -143,7 +143,7 @@
                             <div class="plan-info">
                                 <h1><?= $key->getDayPlanName()?></h1>
                                 <h3><?= $key->getCity() ?>, <?= $key->getCountry()?></h3>
-                                <h3>9am - 12 pm</h3>
+                                <h3><?= $key->getStartTime() ?> - <?= $key->getEndTime() ?></h3>
                                 <h4><?= $key->getCreatedBy() ?></h4>
                                 <div class="likes" id="0">
                                     <h4><?= $key->getLikes() ?></h4>
