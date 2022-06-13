@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="base-container">
+<div class="base-container" id="<?=json_decode($_COOKIE['logUser'], true)['is_admin']?>">
     <nav class="menu">
         <ul>
             <li>

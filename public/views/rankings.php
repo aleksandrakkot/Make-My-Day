@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/public/css/rankings_style.css">
     <script type="text/javascript" src="/public/js/rankings.js" defer></script>
     <script type="text/javascript" src="/public/js/admin.js" defer></script>
+    <script type="text/javascript" src="/public/js/states.js" defer></script>
 </head>
 
 <body>

@@ -51,5 +51,5 @@ deletePublishButtons.forEach(btn => {
     })
 })
 
-preventLoadOnAction();
-preventLoadOnFavourite();
+if(deletePublishButtons.length != 0) preventLoadOnAction();
+if(likesContainer.length != 0 )preventLoadOnFavourite();

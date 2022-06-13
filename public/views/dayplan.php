@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="/public/css/map.css">
     <script src = "/public/js/milestones.js" type="text/javascript" defer></script>
     <script src = "/public/js/map.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="/public/js/admin.js" defer></script>
+    <script type="text/javascript" src="/public/js/states.js" defer></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
-<div class="base-container">
+<div class="base-container" id="<?=json_decode($_COOKIE['logUser'], true)['is_admin']?>">
     <nav class="menu">
         <ul>
             <li>
