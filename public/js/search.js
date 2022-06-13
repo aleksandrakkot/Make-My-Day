@@ -1,3 +1,5 @@
+
+
 const search = document.querySelector('input[name="browser"]')
 const planContainer = document.querySelector('.search-results');
 const a = document.querySelector('.go-to-dayplan')
@@ -69,4 +71,5 @@ function createPlan(p){
     likes.innerHTML = p.likes;
 
     planContainer.appendChild(clone);
+    preventLoadOnFavourite();
 }

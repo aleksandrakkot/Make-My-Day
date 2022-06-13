@@ -1,5 +1,4 @@
 const deletePublishButtons = document.querySelectorAll(".plan-action-buttons")
-const likesContainer = document.querySelectorAll(".likes");
 
 function handleActionPlan(e) {
     const planId = e.target.parentElement.getAttribute("id")
@@ -27,13 +26,17 @@ function deletePlan(planId) {
 }
 
 function preventLoadOnAction() {
-    deletePublishButtons.forEach((elem) => elem.addEventListener("click", (e) => {
+    if(deletePublishButtons.length == 0) return;
+        deletePublishButtons.forEach((elem) => elem.addEventListener("click", (e) => {
         e.preventDefault();
     }));
 }
 
 function preventLoadOnFavourite() {
-    likesContainer.forEach((c)=> c.querySelector("h4").addEventListener("click", (e)=>{
+    const likesContainer = document.querySelectorAll(".likes");
+
+    if(likesContainer.length == 0 ) return;
+        likesContainer.forEach((c)=> c.querySelector("h4").addEventListener("click", (e)=>{
         e.preventDefault();
         e.target.parentElement.querySelector("svg").classList.toggle("favourited");
     }));
@@ -51,5 +54,5 @@ deletePublishButtons.forEach(btn => {
     })
 })
 
-if(deletePublishButtons.length != 0) preventLoadOnAction();
-if(likesContainer.length != 0 )preventLoadOnFavourite();
+preventLoadOnAction();
+preventLoadOnFavourite();
