@@ -216,7 +216,10 @@ li {
     max-width: 40%;
 }
 
-
+p.plan-info {
+    display: flex;
+    justify-content: center;
+}
 
 .likes {
     display: flex;
@@ -278,9 +281,11 @@ li {
 
 .search-results {
     display: flex;
+    align-items: center;
     flex-direction: column;
     height: 90%;
     width: 100%;
+
 }
 
 .search-results {
@@ -288,10 +293,17 @@ li {
     font-family: var(--main-font);
     color: black;
     font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .plans-info {
     text-align: center;
+    position: relative;
+    font-family: var(--main-font);
+    color: black;
+    margin: 2em;
+    padding-bottom: 0.5em;
 }
 
 .private-plan-action-buttons {
