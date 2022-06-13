@@ -143,9 +143,6 @@
                 <div id="map">available</div>
             </div>
             <?php endif?>
-            <div class="comments">
-                    <h2>Comments</h2>
-            </div>
         </div>
     </div>
 </div>
