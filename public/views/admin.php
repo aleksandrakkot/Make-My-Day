@@ -128,8 +128,8 @@
                                     </svg>
                                 </div>
                                 <div class="private-plan-action-buttons" id="<?= $key->getDayPlanId() ?>">
-                                    <button class="plan-action-buttons" id="delete_btn">Delete</button>
-                                    <button class="plan-action-buttons" id="publish_btn">Publish</button>
+                                    <button class="plan-action-buttons" id="reject_btn">Reject</button>
+                                    <button class="plan-action-buttons" id="approve_btn">Approve</button>
                                 </div>
                             </div>
                         </div>
