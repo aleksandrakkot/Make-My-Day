@@ -71,7 +71,7 @@ function createPlan(p){
     likes.innerHTML = p.likes;
 
     const time = clone.querySelector("#plans-time");
-    time.innerHTML = p.likes;
+    time.innerHTML = p.start + " - " + p.fin;
 
     planContainer.appendChild(clone);
     preventLoadOnFavourite();

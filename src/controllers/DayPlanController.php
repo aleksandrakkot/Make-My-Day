@@ -63,7 +63,34 @@ class DayPlanController extends AppController
             header('Content-type: application/json');
             http_response_code(200);
 
-            echo json_encode($this->dayPlanRepository->getPlansByCity($decoded['search']));
+            $json_var = '[';
+
+            $plans = $this->dayPlanRepository->getPlansByCity($decoded['search']);
+            for( $i = 0; $i < count($plans); $i++){
+                if($i!=0 ) $json_var= $json_var.',';
+                $json_var = $json_var."{";
+                $json_var = $json_var."\"day_plan_id\":".$plans[$i]->getDayPlanId();
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"day_plan_name\": \"".$plans[$i]->getDayPlanName()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"image\": \"".$plans[$i]->getImage()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"city_name\":\"".$plans[$i]->getCity()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"nick\":\"".$plans[$i]->getCreatedBy()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"likes\":".$plans[$i]->getLikes();
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"start\":\"".$plans[$i]->getStartTime()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"fin\":\"".$plans[$i]->getEndTime()."\"";
+                $json_var = $json_var."}";
+
+            }
+
+            $json_var = $json_var."]";
+
+            echo $json_var;
         }
     }
 
