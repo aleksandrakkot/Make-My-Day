@@ -105,9 +105,10 @@ class DayPlanController extends AppController
         $user_id = $this->userRepository->getUserId($this->user_array['email']);
         $all_plans = $this->dayPlanRepository->getUserPlans($user_id);
         $private_plans = $this->dayPlanRepository->getPublicPrivateUserPlans($user_id,0);
+        $pending_plans = $this->dayPlanRepository->getPublicPrivateUserPlans($user_id,2);
         $public_plans = $this->dayPlanRepository->getPublicPrivateUserPlans($user_id, 1);
 
-        $this->render('yourplans', ['all_plans'=>$all_plans, 'private_plans'=>$private_plans, 'public_plans'=>$public_plans]);
+        $this->render('yourplans', ['all_plans'=>$all_plans, 'private_plans'=>$private_plans,'pending_plans'=>$pending_plans, 'public_plans'=>$public_plans]);
     }
 
     public function createplan(){
