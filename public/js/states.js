@@ -24,19 +24,20 @@ function handleActionPlan(e) {
 
     switch (e.target.getAttribute("id")){
         case "delete_btn":
-            handlePlan(planId,-1)
+            console.log('usuwanie')
+            handlePlan(planId,'-1')
             break
         case "publish_btn":
-            handlePlan(planId,2)
+            handlePlan(planId,'2')
             break
         case "reject_btn":
-            handlePlan(planId,0)
+            handlePlan(planId,'0')
             break
         case "unpublish_btn":
-            handlePlan(planId,0)
+            handlePlan(planId,'0')
             break
         case "approve_btn":
-            handlePlan(planId,1)
+            handlePlan(planId,'1')
             break
         default:
             alert("zla nazwa przycisku!")
@@ -54,15 +55,67 @@ function preventLoadOnAction() {
 function preventLoadOnFavourite() {
     const likesContainer = document.querySelectorAll(".likes");
 
-    if(likesContainer.length == 0 ) return;
+
+    if(likesContainer.length === 0 ) return;
         likesContainer.forEach((c)=> c.querySelector("h4").addEventListener("click", (e)=>{
         e.preventDefault();
         e.target.parentElement.querySelector("svg").classList.toggle("favourited");
+        changeStats(e.target,'h4')
     }));
     likesContainer.forEach((c)=> c.querySelector("svg").addEventListener("click", (e)=>{
         e.preventDefault();
-        e.target.classList.toggle("favourited");
+        e.target.parentElement.classList.toggle("favourited");
+        changeStats(e.target,'svg')
     }));
+}
+
+function changeStats(e,what) {
+
+    let parent = e.parentElement.parentElement.parentElement.parentElement
+    let svg
+    let number_h4
+    if(what === 'svg'){
+        parent=parent.parentElement
+        number_h4=e.parentElement.previousElementSibling
+        svg = e.parentElement
+    }else{
+        number_h4=e
+        svg = e.nextElementSibling
+    }
+    const id = (parent.getAttribute("href")).split('/').at(-1)
+
+    if (svg.classList.contains("favourited")){
+        const data = {
+            id: id,
+            bool: true
+        }
+        console.log('contains fav');
+        fetch("/heart", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function () {
+            console.log(1);
+            number_h4.innerHTML = parseInt(number_h4.innerHTML) + 1;
+        })
+    } else {
+        const data = {
+            id: id,
+            bool: false
+        }
+        fetch("/heart", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function () {
+            console.log(0);
+            number_h4.innerHTML = parseInt(number_h4.innerHTML) - 1;
+        })
+    }
 }
 
 

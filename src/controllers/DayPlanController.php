@@ -46,8 +46,6 @@ class DayPlanController extends AppController
 
         $top_plans_world = $this->dayPlanRepository->getTopWorld();
 
-
-
         $this->render('rankings', ['top_plans_country'=>$top_plans_country, 'top_plans_world'=>$top_plans_world]);
 
     }
@@ -76,6 +74,8 @@ class DayPlanController extends AppController
                 $json_var = $json_var."\"image\": \"".$plans[$i]->getImage()."\"";
                 $json_var = $json_var.", ";
                 $json_var = $json_var."\"city_name\":\"".$plans[$i]->getCity()."\"";
+                $json_var = $json_var.", ";
+                $json_var = $json_var."\"is_fav\":\"".$plans[$i]->getIsFav()."\"";
                 $json_var = $json_var.", ";
                 $json_var = $json_var."\"nick\":\"".$plans[$i]->getCreatedBy()."\"";
                 $json_var = $json_var.", ";
@@ -166,17 +166,22 @@ class DayPlanController extends AppController
 
         if ($this->isPost()) {
             $files_array = [];
-                if (isset($_FILES['file'])) {
-                    $file_name = $_FILES['file']['name'];
-                    array_push($files_array, $file_name);
-                    $file_tmp =$_FILES['file']['tmp_name'];
-                    move_uploaded_file( $file_tmp,  dirname(__DIR__).self::UPLOAD_DIRECTORY.$file_name);
-                }
+            if (isset($_FILES['file'])) {
+                $file_name = $_FILES['file']['name'];
+                array_push($files_array, $file_name);
+                $file_tmp =$_FILES['file']['tmp_name'];
+                move_uploaded_file( $file_tmp,  dirname(__DIR__).self::UPLOAD_DIRECTORY.$file_name);
+            }
+
+            if ($files_array[0] == NULL) {
+                $post_image = 'default_pic.png';
+            } else {
+                $post_image = $files_array[0];
+            }
 
             $post_city = $_POST['city'];
             $post_country = $_POST['country'];
 
-            $post_image = $files_array[0];
             $post_day_plan_name = $_POST['day_plan_name'];
             $post_day_plan_description = $_POST['description'];
 
@@ -188,6 +193,7 @@ class DayPlanController extends AppController
             $day_plan->setCountry($post_country);
             $day_plan->setDayPlanName($post_day_plan_name);
             $day_plan->setDescription($post_day_plan_description);
+            $day_plan->setIsFav(false);
 
             $post_milestone_location_name[0] = $_POST['milestone_location_name'][0];
             //$post_milestone_image[0] = $files_array[1];
@@ -272,10 +278,33 @@ class DayPlanController extends AppController
             http_response_code(200);
             $id=$decoded['id'];
             $state=$decoded['state_flag'];
+
             $this->dayPlanRepository->handleDayPlan($id,$state);
             echo json_encode('success');
         }
     }
+
+    public function heart(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+            $id=$decoded['id'];
+            $state=$decoded['bool'];
+            $userid = $this->userRepository->getUserId($this->user_array['email']);
+            if($state){
+                $this->dayPlanRepository->incrementHeart($id, $userid);
+            }else{
+                $this->dayPlanRepository->decrementHeart($id, $userid);
+            }
+            echo json_encode('success');
+        }
+
+    }
+
 
     public function favourites()
     {

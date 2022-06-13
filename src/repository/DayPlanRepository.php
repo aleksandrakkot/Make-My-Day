@@ -1,10 +1,20 @@
 <?php
 
 require_once 'Repository.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
 require_once __DIR__ . '/../models/DayPlan.php';
 
 class DayPlanRepository extends Repository
 {
+    private UserRepository $userRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+        $this->user_array = json_decode($_COOKIE['logUser'], true);
+    }
+
     public function getTopCountry(int $country_id)
     {
         $stmt = $this->database->connect()->prepare('
@@ -191,8 +201,9 @@ class DayPlanRepository extends Repository
 
     public function handleDayPlan($id, $state_flag)
     {
-        $stmt=0;
-        if ($state_flag == -1) {
+        $stmt = 0;
+        if ($state_flag == '-1') {
+
             $stmt = $this->database->connect()->prepare('
                     DELETE FROM public.day_plan 
                     WHERE day_plan_id = :id
@@ -201,15 +212,17 @@ class DayPlanRepository extends Repository
             $stmt = $this->database->connect()->prepare('
                     UPDATE public.day_plan SET state_flag = :state_flag WHERE day_plan_id = :id
                 ');
+            $stmt->bindParam(':state_flag', $state_flag, PDO::PARAM_INT);
         }
 
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':state_flag', $state_flag, PDO::PARAM_INT);
         $stmt->execute();
     }
 
-    private function createPlanModel($plans){
+    private function createPlanModel($plans)
+    {
         $result = [];
+        $userid = $this->userRepository->getUserId($this->user_array['email']);
         $i = 0;
 
         foreach ($plans as $plan) {
@@ -223,13 +236,16 @@ class DayPlanRepository extends Repository
             $time = $this->getStartEndTime($plan['day_plan_id']);
             $result[$i]->setStartTime($time['start']);
             $result[$i]->setEndTime($time['fin']);
+            $ifFav = $this->ifPlanIsFavourite($plan['day_plan_id'],$userid);
+            $result[$i]->setIsFav($ifFav);
             $i += 1;
         }
 
         return $result;
     }
 
-    private function getStartEndTime($plan_id){
+    private function getStartEndTime($plan_id)
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT min(milestone_start_time) start, max(milestone_end_time) fin FROM public.milestone
             WHERE day_plan_id = :planid
@@ -242,5 +258,72 @@ class DayPlanRepository extends Repository
         $time = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $time;
+    }
+
+    public function incrementHeart($id, int $userid)
+    {
+        $this->updateOrInsertHeart($id, $userid);
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.day_plan SET likes = likes + 1 where day_plan_id = :id;
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function decrementHeart($id, int $userid)
+    {
+        $this->updateOrInsertHeart($id, $userid);
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.day_plan SET likes = likes - 1 where day_plan_id = :id;
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    private function updateOrInsertHeart($id, int $userid)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.user_day_plan_favourites
+            WHERE user_id = :userid and day_plan_id = :id
+        ');
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $fav = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($fav == false) {
+            $stmt2 = $this->database->connect()->prepare('
+                INSERT INTO public.user_day_plan_favourites (user_id,day_plan_id)
+                VALUES (?, ?)
+            ');
+            $stmt2->execute([
+                $userid,
+                $id]);
+        } else {
+            $stmt2 = $this->database->connect()->prepare('
+                DELETE FROM public.user_day_plan_favourites
+                    WHERE day_plan_id = :id and user_id = :userid
+                ');
+            $stmt2->bindParam(':userid', $userid, PDO::PARAM_INT);
+            $stmt2->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt2->execute();
+        }
+    }
+
+    private function ifPlanIsFavourite($id,$userid)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.user_day_plan_favourites
+            WHERE user_id = :userid and day_plan_id = :id
+        ');
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $out = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($out) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

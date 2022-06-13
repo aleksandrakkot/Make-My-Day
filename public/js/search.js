@@ -70,6 +70,13 @@ function createPlan(p){
     const likes = clone.querySelector("#plans-likes");
     likes.innerHTML = p.likes;
 
+    const heart = clone.querySelector("svg")
+    console.log(p.is_fav)
+    if(p.is_fav === '1'){
+        console.log(heart)
+        heart.classList.add("favourited")
+    }
+
     const time = clone.querySelector("#plans-time");
     time.innerHTML = p.start + " - " + p.fin;
 

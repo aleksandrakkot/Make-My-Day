@@ -20,6 +20,7 @@ Router::get('rankings', 'DayPlanController');
 Router::get('dayplan', 'DayPlanController');
 Router::get('places', 'DayPlanController');
 Router::post('handlePlan', 'DayPlanController');
+Router::post('heart','DayPlanController');
 
 
 Router::get('milestone', 'MilestoneController');

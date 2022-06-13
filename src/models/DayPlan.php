@@ -14,6 +14,7 @@ class DayPlan
     private $created_by_id;
     private $state_flag;
     private $start_time;
+    private $is_fav;
 
     public function getStartTime()
     {
@@ -153,6 +154,16 @@ class DayPlan
     public function setCreatedById($created_by_id): void
     {
         $this->created_by_id = $created_by_id;
+    }
+
+    public function setIsFav($bool): void
+    {
+        $this->is_fav = $bool;
+    }
+
+    public function getIsFav()
+    {
+        return $this->is_fav;
     }
 
 }
