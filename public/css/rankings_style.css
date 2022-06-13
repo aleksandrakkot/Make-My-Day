@@ -194,6 +194,7 @@ li {
 
 .plan-content {
     max-width: 970px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -202,9 +203,12 @@ li {
     margin: 0.5em 2em 0.5em 2em;
 }
 
+
+
 .plan-photo > img {
-    max-width: 450px;
-    max-height: 350px;
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
     margin: 1em;
 }
 
@@ -247,7 +251,7 @@ p.plan-info {
 }
 
 .search-container {
-    width: 50%;
+    width: 970px;
     height: 95%;
     padding-top: 3em;
     margin: 0 auto;

@@ -107,7 +107,7 @@
         <section class="search-container">
             <div class="search-bar">
                 <div id="browser-div">
-                    <input name="browser" placeholder="Krakow">
+                    <input name="browser" placeholder="Enter city...">
                     <button id="search-btn">search</button>
                 </div>
             </div>
