@@ -98,10 +98,10 @@ class DayPlanController extends AppController
 
         session_start();
 
-        if(!isset($_SESSION['user'])){
+        /*if(!isset($_SESSION['user'])){
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         $userid = $this->userRepository->getUserId($_SESSION['user']);
         $plan = $this->dayPlanRepository->getPlanById($id);
@@ -130,10 +130,10 @@ class DayPlanController extends AppController
 
     public function yourplans()
     {
-        if (!isset($_SESSION['user'])) {
+        /*if (!isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         $user_id = $this->userRepository->getUserId($this->user_array['email']);
         $all_plans = $this->dayPlanRepository->getUserPlans($user_id);
@@ -146,10 +146,10 @@ class DayPlanController extends AppController
 
     public function createplan(){
 
-        if (!isset($_SESSION['user'])) {
+        /*if (!isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         $countries= $this->countryRepository->getCountries();
         $cities= $this->countryRepository->getCities();
@@ -159,10 +159,10 @@ class DayPlanController extends AppController
 
     public function addplan($steps) {
 
-        if (!isset($_SESSION['user'])) {
+        /*if (!isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         if ($this->isPost()) {
             $files_array = [];
@@ -279,10 +279,10 @@ class DayPlanController extends AppController
 
     public function favourites()
     {
-        if (!isset($_SESSION['user'])) {
+        /*if (!isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         $id = $this->userRepository->getUserId($this->user_array['email']);
         $fav_plans = $this->dayPlanRepository->getFavouritePlans($id);
@@ -315,10 +315,10 @@ class DayPlanController extends AppController
 
     public function admin() {
 
-        if (!isset($_SESSION['user'])) {
+        /*if (!isset($_SESSION['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
-        }
+        }*/
 
         $plans_to_commit = $this->dayPlanRepository->getPlanToCommit();
         $this->render('admin', ['plans_to_commit'=>$plans_to_commit]);
