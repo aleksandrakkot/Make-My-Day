@@ -51,15 +51,12 @@ class MilestoneRepository extends Repository
     
     private function getCooridinates($street,  $num, $city){
 
-        $street_tmp = iconv('utf-8', 'ISO-8859-1//TRANSLIT//IGNORE', $street);
-
-        if($street_tmp != false) $street = $street_tmp;
-
         $url = "https://api.opencagedata.com/geocode/v1/json?q=".$street."%20".$num."%2C%20".$city."&key=".MAP_API."&language=en&pretty=1&no_annotations=1";
 
-        $geocode = file_get_contents($url);
+        $encodedUrl = urlencode($url);
+        $fixedEncodedUrl = str_replace(['%2F', '%3A', '%3F', '%3D', '%2520', '%252C', '%26'], ['/', ':', '?', '=', '', '%2C%20', '&'], $encodedUrl);
 
-        $json = json_decode($geocode);
+        $json = json_decode(file_get_contents($fixedEncodedUrl));
 
         if(!$json->results[0]->components->road) return false;
 
@@ -77,5 +74,17 @@ class MilestoneRepository extends Repository
         $stmt->bindParam(':planid', $planid, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getStartEndTime($plan_id){
+        $stmt = $this->database->connect()->prepare('
+            SELECT min(milestone_start_time) start, max(milestone_end_time) end FROM public.milestone
+            WHERE plan_id = :planid
+        ');
+
+        $stmt->bindParam(':planid', $plan_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $time = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
