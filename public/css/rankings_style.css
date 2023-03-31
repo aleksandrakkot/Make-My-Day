@@ -1,0 +1,348 @@
+:root{
+    --main-font : 'Inter', sans-serif;
+    --orange-color: #F58800;
+    --light-orange-color: #F7A821;
+    --lightgreen-color: #256A67
+}
+
+
+
+.base-container {
+    max-width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3em;
+}
+
+.menu {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1em;
+    position: fixed;
+}
+
+.menu > ul {
+    list-style-type: none;
+    margin-bottom: 5em;
+}
+
+li {
+    margin: 2em 1em;
+}
+
+.menu-addplan > a {
+    padding: 1em;
+    position: absolute;
+    top: 85%;
+    left: 40px;
+    background-color: var(--orange-color);
+}
+
+.menu-icons {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-icons span.preview {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    opacity: 0;
+    font-family: var(--main-font);
+    color: black;
+}
+
+.menu-icons:hover span.preview {
+    opacity: 1;
+}
+
+.menu-addplan {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-addplan span.preview {
+    position: absolute;
+    top: 15px;
+    left: 75px;
+    opacity: 0;
+    font-family: var(--main-font);
+    color: black;
+}
+
+.menu-addplan:hover span.preview {
+    opacity: 1;
+}
+
+.top10-country-results, .top10-world-results, .your-plan-result-divs  {
+    display: none;
+}
+
+.top10-world-results.active , .top10-country-results.active, .your-plan-result-divs.active {
+    display: block;
+    width: 60%;
+}
+
+.favourites-results {
+    display: block;
+    width: 60%;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-site {
+    max-width: 100vw;
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 2em;
+    position: relative;
+}
+
+#logo {
+    width: 40%;
+}
+
+#username-logout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;;
+    left: 80%;
+}
+
+.username-button {
+    font-family: var(--main-font);
+    color: black;
+    text-decoration: none;
+}
+
+.username {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0em 1em;
+    font-family: var(--main-font);
+}
+
+.username > h5 {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.username > svg {
+    margin: 0.5em;
+}
+
+.log-out-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0em 1em;
+    padding-top: 0.3em;
+    font-family: var(--main-font);
+}
+
+.top10 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#choose-top10 {
+    margin: 0.5em 0.1em 0.1em 0.1em;
+    padding: 0.1em;
+    display: flex;
+}
+
+#choose-top10 > a {
+    font-family: var(--main-font);
+    color: black;
+    margin: 1em 5em;
+    text-decoration: none;
+}
+
+#choose-top10 a.active {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--orange-color);
+}
+
+#choose-top10 a.active, #choose-top10 a:hover {
+    height: 40%;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--orange-color);
+    transition: all 0.1s;
+}
+
+.go-to-dayplan {
+    text-decoration: none;
+}
+
+.plan-content {
+    max-width: 970px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0.5em 2em 0.5em 2em;
+}
+
+
+
+.plan-photo > img {
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+    margin: 1em;
+}
+
+.plan-info {
+    position: relative;
+    font-family: var(--main-font);
+    color: black;
+    margin: 2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--orange-color);
+    width: 40%;
+    max-width: 40%;
+}
+
+p.plan-info {
+    display: flex;
+    justify-content: center;
+}
+
+.likes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.likes > svg {
+    margin: 0.5em;
+}
+
+.likes > svg:hover, .likes.active{
+    fill: var(--orange-color);
+}
+
+.search-container, .search-container .search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.search-container {
+    width: 970px;
+    height: 95%;
+    padding-top: 3em;
+    margin: 0 auto;
+}
+
+#browser-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-container div > input {
+    width: 70%;
+    padding: 1em;
+    border: 1px solid black;
+
+}
+
+.search-container div > button {
+    width: 20%;
+    background-color: var(--light-orange-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-container div > button:hover {
+    background-color: var(--orange-color);
+}
+
+.search-bar {
+    height: 10%;
+}
+
+.search-results {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+    width: 100%;
+
+}
+
+.search-results {
+    padding: 1em;
+    font-family: var(--main-font);
+    color: black;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.plans-info {
+    text-align: center;
+    position: relative;
+    font-family: var(--main-font);
+    color: black;
+    margin: 2em;
+    padding-bottom: 0.5em;
+}
+
+.private-plan-action-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    position: absolute;
+    bottom: -3em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.private-plan-action-buttons button {
+    z-index: 1;
+    width: 40%;
+    cursor: pointer;
+    text-align: center;
+    background-color: white;
+    padding-top: 0.2em;
+    border: 2px solid var(--orange-color);
+}
+
+.private-plan-action-buttons button:hover {
+    background-color: var(--orange-color);
+}
+
+.favourited {
+    fill: var(--orange-color);
+}
+

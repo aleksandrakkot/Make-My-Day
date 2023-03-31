@@ -1,0 +1,167 @@
+:root{
+    --main-font : 'Inter', sans-serif;
+    --orange-color: #F58800;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+}
+
+.base-container{
+    max-width: 100vw ;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+#left,#right{
+    width: 50%;
+    height: 100vh;
+}
+#left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
+#right{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(246, 136, 2, 0.26);
+    border-radius: 119px 0px 0px 0px;
+    padding: 3em;
+    justify-content: flex-start;
+    align-items: center;
+    gap:2em;
+}
+#upper_btns{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap:5em;
+}
+upper_btns div{
+    height: 100%;
+    width: 50%;
+}
+#upper_btns a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    height: 50%;
+}
+
+#upper_btns a.active,#upper_btns a:hover {
+    height: 80%;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--orange-color);
+    transition: all 0.1s;
+}
+#head_welcome{
+    height: 20%;
+    text-align: center;
+    justify-self: center;
+}
+#head_welcome h1{
+    font-size: 34px;
+}
+#head_welcome p{
+    margin-top: 1em;
+    font-size: 16px;
+}
+#right form{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:2em;
+}
+#right form p{
+    font-size: 14px;
+    height: 30%;
+}
+#right form input, #select-country{
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 3px;
+    border: none;
+}
+form .showBtn {
+    position: absolute;
+    display: none;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.1s;
+}
+form .field{
+    position: relative;
+}
+.div-btn, .div-inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.div-btn{
+    height: 30%;
+}
+.div-inputs{
+    height: 70%;
+}
+
+#right form .create-account{
+    text-align: center;
+    letter-spacing: 0.13em;
+    font-size: 18px;
+}
+#right form .create-account a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+}
+.div-inp , .div-inp2{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 80%;
+}
+.step.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1em;
+}
+.step{
+    display: none;
+}
+.btn {
+    align-self: center;
+    width: 50%;
+    padding: 0.5em;
+    background-color: var(--orange-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#left img {
+    width: 70%;
+}
+
+.no-valid {
+    border: #E53A3A solid 1px;
+    background-color: #E59E88;
+    outline: none;
+    transition: all 0.1s;
+}
